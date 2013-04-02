@@ -8,8 +8,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
 
-import fr.montagnesdor.util.SimulateurImprimante;
-
 public final class MyLogFactoryImpl implements MyLogFactory 
 {
 	private static MyLogFactory myLogFactory = null;
@@ -59,7 +57,7 @@ public final class MyLogFactoryImpl implements MyLogFactory
 		    defaultLog.addAppender(consoleAppender);
 		    
 			boolean flag = resource.getString("log4j.appender.A2.Append")==null?false:resource.getString("log4j.appender.A2.Append").equals("true");
-			String file = SimulateurImprimante.class.getResource(resource.getString("log4j.appender.A2.FileName")).getPath();
+			String file = MyLogFactoryImpl.class.getResource(resource.getString("log4j.appender.A2.FileName")).getPath();
 			PatternLayout patternLayout2 = new PatternLayout(resource.getString("log4j.appender.A2.layout.ConversionPattern"));
 			RollingFileAppender rollingFileAppender = new RollingFileAppender(patternLayout2, file, flag);
 			rollingFileAppender.setName(resource.getString("log4j.appender.A2.Name"));			

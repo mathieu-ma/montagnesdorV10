@@ -195,7 +195,8 @@
     		<forward name="success" path="/jsp/monthlyReceipts/downloadMonthlyReceiptsList.jsp"/>
 	    </action>
 	    
-
-
+	    <!-- Import Take-Away orders -->
+	    <action path="/ImportTakeAwayOrders" parameter="action" type="fr.montagnesdor.restaurant.struts.actions.ImportTakeAwayOrdersAction" scope="request" />
+	    
  	</action-mappings>
 </struts-config>

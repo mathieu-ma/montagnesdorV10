@@ -1,5 +1,11 @@
 package fr.montagnesdor.util;
 
+import gnu.io.CommDriver;
+import gnu.io.CommPortIdentifier;
+import gnu.io.SerialPort;
+import gnu.io.SerialPortEvent;
+import gnu.io.SerialPortEventListener;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -14,12 +20,6 @@ import java.io.OutputStream;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-
-import javax.comm.CommDriver;
-import javax.comm.CommPortIdentifier;
-import javax.comm.SerialPort;
-import javax.comm.SerialPortEvent;
-import javax.comm.SerialPortEventListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

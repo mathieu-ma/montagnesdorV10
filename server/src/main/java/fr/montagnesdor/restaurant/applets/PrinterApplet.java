@@ -5,14 +5,14 @@
  */
 package fr.montagnesdor.restaurant.applets;
 
+import gnu.io.CommDriver;
+import gnu.io.CommPortIdentifier;
+import gnu.io.SerialPort;
+
 import java.io.BufferedOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.StringTokenizer;
-
-import javax.comm.CommDriver;
-import javax.comm.CommPortIdentifier;
-import javax.comm.SerialPort;
 
 /**
  *

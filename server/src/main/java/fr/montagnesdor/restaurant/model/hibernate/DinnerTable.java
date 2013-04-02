@@ -53,7 +53,7 @@ public class DinnerTable
 	private boolean reductionRatioChanged = false;
 	private boolean takeaway = false;
 
-	private Set orders;
+	private Set<OrderLine> orders;
 
 	//reduction n'est pas un champ dans la table
 	private float reduction;
@@ -257,7 +257,7 @@ public class DinnerTable
 	/**
 	 * @return
 	 */
-	public Set getOrders()
+	public Set<OrderLine> getOrders()
 	{
 		return orders;
 	}
@@ -265,7 +265,7 @@ public class DinnerTable
 	/**
 	 * @param set
 	 */
-	public void setOrders(Set list)
+	public void setOrders(Set<OrderLine> list)
 	{
 		orders = list;
 	}
@@ -372,4 +372,23 @@ public class DinnerTable
     {
         DinnerTable.specificRound = specificRound;
     }
+    
+    /* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "DinnerTable [id=" + id + ", user=" + user + ", roo_id="
+				+ roo_id + ", number=" + number + ", customersNumber="
+				+ customersNumber + ", quantitiesSum=" + quantitiesSum
+				+ ", amountsSum=" + amountsSum + ", reductionRatio="
+				+ reductionRatio + ", amountPay=" + amountPay
+				+ ", registrationDate=" + registrationDate + ", printDate="
+				+ printDate + ", cashingDate=" + cashingDate
+				+ ", reductionRatioChanged=" + reductionRatioChanged
+				+ ", takeaway=" + takeaway + ", orders=" + orders
+				+ ", reduction=" + reduction
+				+ ", allowModifyOrdersAfterPrinting="
+				+ allowModifyOrdersAfterPrinting + ", vats=" + vats + "]";
+	}
 }

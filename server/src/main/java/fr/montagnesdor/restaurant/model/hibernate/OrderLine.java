@@ -223,4 +223,10 @@ public class OrderLine
 		productPart = part;
 	}
 	
+	@Override
+	public String toString() {
+		return "OrderLine [id=" + id + ", quantity=" + quantity
+				+ ", productPart=" + productPart + ", label=" + label
+				+ ", unitPrice=" + unitPrice + ", amount=" + amount + "]";
+	}
 }

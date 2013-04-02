@@ -99,6 +99,7 @@ grant Principal fr.montagnesdor.restaurant.jaas.authorization.TypedPrincipal "AD
   	
   	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DaylyReceiptsListUpload.do";
   	
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ImportTakeAwayOrders.do";
 };
 
 
