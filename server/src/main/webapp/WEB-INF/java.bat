@@ -1,0 +1,1 @@
+E:\java\j2sdk1.4\bin\java.exe -classpath E:\mathieu\guilwebeasy\fileextraction\lib\log4j-1.2.6.jar;E:\mathieu\guilwebeasy;.\class com.guilbert.batch.TranfertFilesMaketing

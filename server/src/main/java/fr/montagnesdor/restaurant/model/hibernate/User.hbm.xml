@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.User" table="t_user">
+                <id name="id" column="usr_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<many-to-one name="userAuthentication" column="aut_id"/>
+				<many-to-one name="userRole" column="rol_id"/>
+				<property name="name" column="usr_name"/>
+                <property name="forename1" column="usr_forename1"/>
+                <property name="forename2" column="usr_forename2"/>         
+                <property name="birthdate" column="usr_birthdate" type="date"/>
+				<property name="sex" column="usr_sex" type="byte"/>
+				<many-to-one name="preferedPrintLanguage" column="loc_id"/>
+				<property name="picture" column="usr_picture" type="binary"/>
+				<!--property name="photo" type="fr.montagnesdor.util.test.InputStreamBinaryType"/-->
+        </class>
+        
+
+</hibernate-mapping>

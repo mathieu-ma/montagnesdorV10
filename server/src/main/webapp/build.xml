@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="montagnesdor" default="native2ascii" basedir=".">
+	<description>
+        Targets présents : 
+		1) native2ascii : permet de transformer les fichiers properties d'un certain langage en un autre.        
+		2) keytool.genkey : permet de générer un fichier de type keystore.
+		3) keytool.export : permet de générer un certificat associé au fichier keystore généré précédemment.
+		4) DateTimeApplet.jar : permet créer le jar DateTimeApplet.jar.
+		5) SDateTimeApplet.jar : permet de créer le jar avec sécurité SDateTimeApplet.jar à partir du jar DateTimeApplet.jar.
+		6) TableOrdersApplet.jar : permet créer le jar TableOrdersApplet.jar.
+		7) STableOrdersApplet.jar : permet de créer le jar avec sécurité STableOrdersApplet.jar à partir du jar TableOrdersApplet.jar.
+    </description>
+    
+   	<property name="java.bin.dir" location="F:\montagnesdor\j2sdk1.4.2_08\bin"/>  	
+    
+  	<property name="native2ascii.exe" location="${java.bin.dir}/native2ascii"/>  	
+  	<property name="native2ascii.basedir" location="${basedir}/WEB-INF/src/fr/montagnesdor/restaurant/struts"/>  	
+	<property name="native2ascii.encoding" value="UTF-8"/>
+	<property name="native2ascii.input.file" location="${native2ascii.basedir}/ApplicationResources.properties"/>
+	<property name="native2ascii.output.file.fr" location="${native2ascii.basedir}/ApplicationResources_fr.properties"/>	
+	<property name="native2ascii.output.file.zh" location="${native2ascii.basedir}/ApplicationResources_zh.properties"/>	
+	<property name="native2ascii.output.file.en" location="${native2ascii.basedir}/ApplicationResources_en.properties"/>	
+	<property name="native2ascii.output.file.aa" location="${native2ascii.basedir}/ApplicationResources_aa.properties"/>		
+  	<target name="native2ascii">
+  		<echo message="${native2ascii.exe} -encoding ${native2ascii.encoding} ${native2ascii.input.file} ${native2ascii.output.file.aa}"></echo>
+		<exec executable="${native2ascii.exe}">
+			<arg line="-encoding ${native2ascii.encoding} ${native2ascii.input.file} ${native2ascii.output.file.zh}"/>
+		</exec>
+  	</target>
+
+	<property name="jar.exe" location="${java.bin.dir}/jar"/>
+	<property name="jarsigner.exe" location="${java.bin.dir}/jarsigner"/>	
+	<property name="jar.dir" location="${basedir}/jsp/commons"/>
+	<property name="class.base.dir" location="${basedir}/WEB-INF/classes"/>
+
+	<property name="keytool.exe" location="${java.bin.dir}/keytool"/>
+	<property name="alias" value="kimsanfile"/>
+	<property name="keystore" value="kimsankeystore"/>
+	<property name="keypass" value="kimsan"/>	
+	<property name="dname" value="cn=kimsan"/>
+	<property name="storepass" value="kimsan"/>
+  	<target name="keytool.genkey">
+  		<delete file="${jar.dir}/${keystore}"></delete>
+  		<echo message="${keytool.exe} -genkey -alias ${alias} -keystore ${keystore} -keypass ${keypass} -dname '${dname}' -storepass ${storepass}"></echo>
+		<exec executable="${keytool.exe}" dir="${jar.dir}">
+			<arg line="-genkey -alias ${alias} -keystore ${keystore} -keypass ${keypass} -dname '${dname}' -storepass ${storepass}"/>
+		</exec>
+  	</target>
+	<property name="certificate.file" value="kimsancer.cer"/>
+  	<target name="keytool.export" depends="keytool.genkey">
+  		<delete file="${jar.dir}/${certificate.file}"></delete>
+  		<echo message="${keytool.exe} -export -alias ${alias} -keystore ${keystore} -storepass ${storepass} -file ${certificate.file}"></echo>
+		<exec executable="${keytool.exe}" dir="${jar.dir}">
+			<arg line="-export -alias ${alias} -keystore ${keystore} -storepass ${storepass} -file ${certificate.file}"/>
+		</exec>
+  	</target>
+
+  	<property name="jar.file.DateTimeApplet" location="${jar.dir}/DateTimeApplet.jar"/>
+  	<property name="class.file.DateTimeApplet" value="fr/montagnesdor/restaurant/applets/DateTimeApplet.class"/>  	
+  	<target name="DateTimeApplet.jar">
+  		<echo message="${jar.exe} cvfM ${jar.file.DateTimeApplet} -C ${class.base.dir} ${class.file.DateTimeApplet}"></echo>
+		<exec executable="${jar.exe}">
+			<arg line="cvfM ${jar.file.DateTimeApplet} -C ${class.base.dir} ${class.file.DateTimeApplet}"/>
+		</exec>
+  	</target>
+  	
+  	<property name="jar.file.SDateTimeApplet" location="${jar.dir}/SDateTimeApplet.jar"/>
+  	<target name="SDateTimeApplet.jar" depends="DateTimeApplet.jar">
+  		<echo message="${jarsigner.exe} -keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.SDateTimeApplet} ${jar.file.DateTimeApplet} ${alias}"></echo>
+		<exec executable="${jarsigner.exe}" dir="${jar.dir}">
+			<arg line="-keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.SDateTimeApplet} ${jar.file.DateTimeApplet} ${alias}"/>
+		</exec>
+  	</target>
+
+  	<property name="jar.file.TableOrdersApplet" location="${jar.dir}/TableOrdersApplet.jar"/>
+  	<property name="class.file.TableOrdersApplet" value="fr/montagnesdor/restaurant/applets/TableOrdersApplet.class"/>  	
+  	<target name="TableOrdersApplet.jar">
+  		<echo message="${jar.exe} cvfM ${jar.file.TableOrdersApplet} -C ${class.base.dir} ${class.file.TableOrdersApplet}"></echo>
+		<exec executable="${jar.exe}">
+			<arg line="cvfM ${jar.file.TableOrdersApplet} -C ${class.base.dir} ${class.file.TableOrdersApplet}"/>
+		</exec>
+  	</target>
+  	
+  	<property name="jar.file.STableOrdersApplet" location="${jar.dir}/STableOrdersApplet.jar"/>
+  	<target name="STableOrdersApplet.jar" depends="TableOrdersApplet.jar">
+  		<echo message="${jarsigner.exe} -keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.STableOrdersApplet} ${jar.file.TableOrdersApplet} ${alias}"></echo>
+		<exec executable="${jarsigner.exe}" dir="${jar.dir}">
+			<arg line="-keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.STableOrdersApplet} ${jar.file.TableOrdersApplet} ${alias}"/>
+		</exec>
+  	</target>
+
+  	<property name="jar.file.PrinterApplet" location="${jar.dir}/PrinterApplet.jar"/>
+  	<property name="class.file.PrinterApplet" value="fr/montagnesdor/restaurant/applets/PrinterApplet*.class"/>  	
+  	<target name="PrinterApplet.jar">
+  		<echo message="${jar.exe} cvfM ${jar.file.PrinterApplet} ${class.file.PrinterApplet}"></echo>
+		<exec executable="${jar.exe}" dir="${class.base.dir}">
+			<arg line="cvfM ${jar.file.PrinterApplet} ${class.file.PrinterApplet}"/>
+		</exec>
+  	</target>
+  	<property name="jar.file.SPrinterApplet" location="${jar.dir}/SPrinterApplet.jar"/>
+  	<target name="SPrinterApplet.jar" depends="PrinterApplet.jar">
+  		<echo message="${jarsigner.exe} -keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.SPrinterApplet} ${jar.file.PrinterApplet} ${alias}"></echo>
+		<exec executable="${jarsigner.exe}" dir="${jar.dir}">
+			<arg line="-keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.SPrinterApplet} ${jar.file.PrinterApplet} ${alias}"/>
+		</exec>
+  	</target>
+
+	<property name="jar.file.ColorPickerApplet" location="${jar.dir}/ColorPickerApplet.jar"/>
+  	<property name="class.file.ColorPickerApplet" value="fr/montagnesdor/restaurant/applets/Color*.class"/>  	
+  	<target name="ColorPickerApplet.jar">
+  		<echo message="${jar.exe} cvfM ${jar.file.ColorPickerApplet} ${class.file.ColorPickerApplet}"></echo>
+		<exec executable="${jar.exe}" dir="${class.base.dir}">
+			<arg line="cvfM ${jar.file.ColorPickerApplet} ${class.file.ColorPickerApplet}"/>
+		</exec>
+  	</target>
+  	<property name="jar.file.SColorPickerApplet" location="${jar.dir}/SColorPickerApplet.jar"/>
+  	<target name="SColorPickerApplet.jar" depends="ColorPickerApplet.jar">
+  		<echo message="${jarsigner.exe} -keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.SColorPickerApplet} ${jar.file.ColorPickerApplet} ${alias}"></echo>
+		<exec executable="${jarsigner.exe}" dir="${jar.dir}">
+			<arg line="-keystore ${keystore} -storepass ${storepass} -keypass ${keypass} -signedjar ${jar.file.SColorPickerApplet} ${jar.file.ColorPickerApplet} ${alias}"/>
+		</exec>
+  	</target>
+
+	<target name="test">
+  	</target>
+</project>

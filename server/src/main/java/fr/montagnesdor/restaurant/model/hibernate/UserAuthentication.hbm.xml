@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.UserAuthentication" table="t_user_authentication">
+                <id name="id" column="aut_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<property name="login" column="aut_login"/>
+                <property name="password" column="aut_password"/>
+                <property name="levelPass1" column="aut_level_pass1"/>         
+				<property name="levelPass2" column="aut_level_pass2"/>         
+                <property name="levelPass3" column="aut_level_pass3"/>
+        </class>
+
+</hibernate-mapping>

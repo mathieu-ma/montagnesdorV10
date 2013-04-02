@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<!--META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=fr"/-->
+
+<TITLE>Menu Principal</TITLE>
+<SCRIPT LANGUAGE="Javascript" >
+<!--
+function print()
+{
+//alert("Avant Impression");
+	var impressionApplet = document.getElementById("idImpressionApplet");
+	impressionApplet.resetDataBuffer();
+	impressionApplet.addData1("  Hello   ");
+	impressionApplet.imprimer();
+//alert("Apr�s Impression");
+}
+
+-->
+</SCRIPT>
+</HEAD>
+
+<BODY bgcolor="#660000">
+<APPLET id='idImpressionApplet' ARCHIVE="SImpressionApplet.jar" CODE = "fr.montagnesdor.restaurant.applets.ImpressionApplet" WIDTH ="10" HEIGHT = "10" style='background-color: #660000'>
+<%
+/*
+		public static final int DATABITS_5 = 5;
+		public static final int DATABITS_6 = 6;
+		public static final int DATABITS_7 = 7;
+		public static final int DATABITS_8 = 8;
+		public static final int STOPBITS_1 = 1;
+		public static final int STOPBITS_2 = 2;
+		public static final int STOPBITS_1_5 = 3;
+		public static final int PARITY_NONE = 0;
+		public static final int PARITY_ODD = 1;
+		public static final int PARITY_EVEN = 2;
+		public static final int PARITY_MARK = 3;
+		public static final int PARITY_SPACE = 4;
+*/
+%>
+<PARAM NAME = "driver.name" VALUE="com.sun.comm.Win32Driver">
+<PARAM NAME = "imprimante.portcom" VALUE="COM1">
+<PARAM NAME = "serialport.bauds" VALUE="9600">
+<PARAM NAME = "serialport.bits" VALUE="8">
+<PARAM NAME = "serialport.stopbits" VALUE="1">
+<PARAM NAME = "serialport.parity" VALUE="2">
+<PARAM NAME = "packet" VALUE="50">
+<PARAM NAME = "pause" VALUE="1500">
+<PARAM NAME = "imprimante.caracteresSpeciaux" VALUE="#;$;à;°;ç;§;^;`;é;ù;è;¨">
+<PARAM NAME = "imprimante.bindCaracteresSpeciaux" VALUE="23;24;40;5B;5C;5D;5E;60;7B;7C;7D;7E">
+<PARAM NAME = "debug" VALUE="true">
+</APPLET>
+<form onsubmit="return false">
+<input type="button" onclick="print()" value="Imprimer">
+</form>
+</BODY>
+</HTML>
+
+
+
+
+
+

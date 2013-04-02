@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+		<query name="UserAuthentication.SelectByLogin">
+			FROM UserAuthentication AS userAuthentication 
+			WHERE userAuthentication.login = :login
+		</query>
+
+		<query name="User.SelectByUserAuthenticationId">
+			FROM User AS user WHERE user.userAuthentication.id = :userAuthenticationId
+		</query>
+
+		<query name="LocaleLanguage.UserLocale.SelectLocaleLanguageByUserIdCurrentLanguage">
+			SELECT localeLanguage FROM LocaleLanguage AS localeLanguage, UserLocale AS userLocale WHERE userLocale.user.id = :userId AND localeLanguage.id.language.id= :currentLanguage AND localeLanguage.id.locale = userLocale.locale
+		</query>
+		
+		<query name="DinnerTable.SelectExcludeCashedTable">
+			SELECT dinnerTable FROM DinnerTable AS dinnerTable WHERE dinnerTable.cashingDate IS NULL ORDER BY dinnerTable.number ASC
+		</query>
+		
+		<query name="DinnerTable.SelectByTableNumber">
+			SELECT dinnerTable 
+			FROM DinnerTable AS dinnerTable 
+			WHERE dinnerTable.number = :tableNumber AND dinnerTable.cashingDate IS NULL
+		</query>
+		
+		<query name="DinnerTable.DeleteById">
+			FROM DinnerTable AS dinnerTable 
+			WHERE dinnerTable.id = :tableId
+		</query>
+
+		<query name="OrderLine.UpdateByDinnerTable">
+			UPDATE t_order_line SET dtb_id = ? WHERE dtb_id = ?
+		</query>
+
+		<query name="OrderLine.deleteByDinnerTable">
+			FROM OrderLine AS orderLine WHERE orderLine.dinnerTable.id = :dinnerTableId
+		</query>
+
+		<query name="ProductLanguage.SelectByProductIdLanguage">
+			SELECT productLanguage 
+			FROM ProductLanguage AS productLanguage, ValueAddedTax AS vat, Product AS product, Locale AS locale,  ProductSpecialCode AS productSpecialCode
+			WHERE productLanguage.id.product.id = :productId AND productLanguage.id.locale.id = :language
+			AND productLanguage.id.product.id = product.id
+			AND productLanguage.id.locale.id = locale.id
+			AND product.productSpecialCode.id = productSpecialCode.id
+			AND product.vat.id = vat.id
+		</query>
+
+		<query name="Product.count">
+			SELECT COUNT(*) FROM Product AS product WHERE product.productSpecialCode.id=1
+		</query>
+		<query name="ProductLanguage.DeleteByProductId">
+			FROM ProductLanguage as productLanguage WHERE productLanguage.id.product.id = :code
+		</query>
+
+		<query name="CategoryRelation.DeleteByProductId">
+			FROM CategoryRelation as categoryRelation WHERE categoryRelation.product.id = :code
+		</query>
+
+		<query name="Product.DeleteByProductId">
+			FROM Product as product WHERE product.id = :code
+		</query>
+
+		<query name="Category.DeleteByCategoryId">
+			FROM Category as category WHERE category.id = :id
+		</query>
+
+		<query name="CategoryRelation.CountByProductId">
+			SELECT COUNT(*) FROM CategoryRelation AS categoryRelation WHERE categoryRelation.product.id= :code
+		</query>
+
+		<query name="DayRevenue.SelectByDinnerTableId">
+			SELECT dayRevenue
+			FROM DayRevenue AS dayRevenue, DinnerTable AS dinnerTable
+			WHERE dinnerTable.id = :tableId
+			AND dayRevenue.revenueDate = :registrationDate
+			AND dayRevenue.closingDate IS NOT NULL
+		</query>
+
+		<query name="StatsConsumptionProduct.SelectByCategoryId">
+			SELECT statsConsumptionProduct 
+			FROM StatsConsumptionProduct AS statsConsumptionProduct, CategoryRelation AS categoryRelation 
+			WHERE categoryRelation.product.id = statsConsumptionProduct.product.id 
+			AND categoryRelation.category.id = :id
+		</query>
+		<query name="StatsConsumptionProduct.SelectByProductLanguage">
+			SELECT statsConsumptionProduct 
+			FROM StatsConsumptionProduct AS statsConsumptionProduct, ProductLanguage AS productLanguage 
+			WHERE productLanguage.id.product.id = statsConsumptionProduct.product.id 
+			AND productLanguage.id.locale.id = :language
+			AND productLanguage.label like :label
+			ORDER BY productLanguage.label
+		</query>
+		<query name="StatsConsumptionProduct.SelectByDate">
+			SELECT sum(statsConsumptionProduct.quantity), statsConsumptionProduct.product
+			FROM StatsConsumptionProduct AS statsConsumptionProduct 
+			WHERE statsConsumptionProduct.updatedDay = :day
+			AND statsConsumptionProduct.updatedMonth = :month 
+			AND statsConsumptionProduct.updatedYear = :year 
+			GROUP BY statsConsumptionProduct.product
+			ORDER BY statsConsumptionProduct.product.id
+		</query>
+		<query name="StatsConsumptionProduct.SelectByDay">
+			SELECT sum(statsConsumptionProduct.quantity), statsConsumptionProduct.product
+			FROM StatsConsumptionProduct AS statsConsumptionProduct 
+			WHERE statsConsumptionProduct.updatedDay = :day
+			GROUP BY statsConsumptionProduct.product
+			ORDER BY statsConsumptionProduct.product.id
+		</query>
+		<query name="StatsConsumptionProduct.SelectByMonth">
+			SELECT sum(statsConsumptionProduct.quantity), statsConsumptionProduct.product
+			FROM StatsConsumptionProduct AS statsConsumptionProduct 
+			WHERE statsConsumptionProduct.updatedDay = :day
+			AND statsConsumptionProduct.updatedMonth = :month 
+			AND statsConsumptionProduct.updatedYear = :year 
+			GROUP BY statsConsumptionProduct.product
+			ORDER BY statsConsumptionProduct.product.id
+		</query>
+
+		<query name="SQL.OrderLine.DeleteByCashingDate">
+			DELETE FROM t_order_line
+			WHERE t_order_line.dtb_id IN (SELECT t_dinner_table.dtb_id FROM t_dinner_table WHERE dtb_cashing_date = ?)
+		</query>
+		<query name="SQL.VatTable.DeleteByCashingDate">
+			DELETE FROM t_vat_table
+			WHERE t_vat_table.dtb_id IN (SELECT t_dinner_table.dtb_id FROM t_dinner_table WHERE dtb_cashing_date = ?)
+		</query>
+		<query name="SQL.Cashing.DeleteByCashingDate">
+			DELETE FROM t_cashing
+			WHERE t_cashing.dtb_id IN (SELECT t_dinner_table.dtb_id FROM t_dinner_table WHERE dtb_cashing_date = ?)
+		</query>
+		<query name="SQL.DayRevenue.SelectYear">
+			SELECT DISTINCT TO_CHAR(drv_revenue_date, 'yyyy') FROM t_day_revenue
+			WHERE drv_closing_date IS NOT NULL
+		</query>
+		<query name="SQL.DayRevenue.SelectAll">
+			SELECT drv_revenue_date as revenueDate, SUM(drv_cash) AS cash, SUM(drv_ticket) AS ticket, SUM(drv_cheque) AS cheque, SUM(drv_card) AS card, SUM(drv_unpaid) AS unpaid, SUM(drv_amount) AS amount
+			FROM t_day_revenue
+			WHERE drv_closing_date IS NOT NULL
+			AND TO_CHAR(drv_revenue_date, 'MM/yyyy') = ?
+			GROUP BY revenueDate
+		</query>
+		
+		<query name="SQL.TableDinner.DeleteByCashingDate">
+			DELETE FROM t_dinner_table
+			WHERE dtb_cashing_date = ?
+		</query>
+
+		<query name="OrderLine.SumAmountByVat">
+			SELECT sum(orderLine.amount) 
+			FROM OrderLine as orderLine, Product AS product 
+			WHERE product.vat.id = :vatId 
+			AND orderLine.product.id = product.id 
+			AND orderLine.dinnerTable.id = :tableId
+		</query>
+		
+		<query name="VatTable.deleteByDinnerTable">
+			FROM VatTable AS vatTable WHERE vatTable.dinnerTable.id = :dinnerTableId
+		</query>
+
+</hibernate-mapping>

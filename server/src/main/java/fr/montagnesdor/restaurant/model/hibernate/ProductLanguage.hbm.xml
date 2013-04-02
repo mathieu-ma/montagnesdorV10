@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.ProductLanguage" table="t_product_language">
+				<composite-id name="id" class="fr.montagnesdor.restaurant.model.hibernate.ProductLanguageID">
+			        <key-many-to-one name="product" class="fr.montagnesdor.restaurant.model.hibernate.Product" column="pdt_id"/>
+	                <key-many-to-one name="locale" column="loc_id" class="fr.montagnesdor.restaurant.model.hibernate.Locale"/>			        
+			    </composite-id>        
+                <property name="label" column="pdl_label" type="string"/>
+        </class>
+
+</hibernate-mapping>

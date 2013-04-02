@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.VatRevenue" table="t_vat_revenue">
+                <id name="id" column="vtr_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<many-to-one name="dayRevenue" column="drv_id"/>
+				<many-to-one name="vat" column="vat_id"/>
+				<property name="amount" column="vtr_amount" type="float"/>
+				<property name="value" column="vtr_value" type="float"/>
+        </class>
+
+</hibernate-mapping>

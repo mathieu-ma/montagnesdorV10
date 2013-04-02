@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.CategoryRelation" table="t_category_relation">
+                <id name="id" column="ctr_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<many-to-one name="product" column="pdt_id" />                
+				<many-to-one name="category" column="cat_id"/>				
+                <property name="quantity" column="ctr_quantity" type="float"/>
+        </class>
+
+</hibernate-mapping>

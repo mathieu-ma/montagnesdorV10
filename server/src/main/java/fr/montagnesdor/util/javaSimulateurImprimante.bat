@@ -1,0 +1,1 @@
+java -classpath ..\..\..\..\lib\log4j-1.2.8.jar;..\..\..\..\lib\comm.jar;..\..\..\..\classes fr.montagnesdor.util.SimulateurImprimante

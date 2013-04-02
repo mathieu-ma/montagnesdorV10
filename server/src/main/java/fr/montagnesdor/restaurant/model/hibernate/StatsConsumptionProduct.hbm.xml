@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.StatsConsumptionProduct" table="t_stats_consumption_product">
+                <id name="id" column="scp_id" type="long">
+                        <generator class="increment"/>
+                </id>
+                <property name="updatedDay" column="scp_updated_day" type="short"/>                
+                <property name="updatedMonth" column="scp_updated_month" type="short"/>                
+                <property name="updatedYear" column="scp_updated_year" type="short"/>                
+				<component name="product" class="fr.montagnesdor.restaurant.model.hibernate.Product">
+            		<property name="id" column="pdt_id"/>
+	    		</component>
+                <property name="quantity" column="scp_quantity" type="float"/>                
+        </class>
+
+</hibernate-mapping>

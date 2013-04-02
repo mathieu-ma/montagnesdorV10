@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.DayRevenue" table="t_day_revenue">
+                <id name="id" column="drv_id" type="long">
+                        <generator class="increment"/>
+                </id>
+                <property name="revenueDate" column="drv_revenue_date" type="date"/>                
+                <property name="printDate" column="drv_print_date" type="date"/>                
+                <property name="closingDate" column="drv_closing_date" type="date"/>                                                
+                <property name="cash" column="drv_cash" type="float"/>                
+                <property name="ticket" column="drv_ticket" type="float"/>                
+				<property name="cheque" column="drv_cheque" type="float"/>                
+                <property name="card" column="drv_card" type="float"/>                
+                <property name="unpaid" column="drv_unpaid" type="float"/>
+                <property name="amount" column="drv_amount" type="float"/>                
+                <property name="takeaway" column="drv_takeaway"  type="boolean"/>                
+				<!--many-to-one name="typeTable" column="ttb_id"/-->
+				
+        		<list name="vats" table="t_vat_revenue" lazy="false" inverse="true">
+            		<key column="drv_id"/>
+            		<index column="vat_id"/>
+            		<one-to-many class="fr.montagnesdor.restaurant.model.hibernate.VatRevenue"/>
+        		</list>
+        </class>
+
+</hibernate-mapping>

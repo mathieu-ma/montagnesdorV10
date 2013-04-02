@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"	"http://jakarta.apache.org/struts/dtds/struts-config_1_0.dtd">
+<struts-config>
+	<!-- ========== Form Bean Definitions =================================== -->
+  	<form-beans>
+    	<!-- Logon form bean -->
+	  	<form-bean name="LogonForm" type="fr.montagnesdor.restaurant.struts.forms.LogonForm"/>
+	  	<form-bean name="ChangeUserPasswordForm" type="fr.montagnesdor.restaurant.struts.forms.ChangeUserPasswordForm"/>
+	  	<form-bean name="MergeTableForm" type="fr.montagnesdor.restaurant.struts.forms.MergeTableForm"/>
+	  	<form-bean name="ChangeTableForm" type="fr.montagnesdor.restaurant.struts.forms.ChangeTableForm"/>	  	
+	  	<form-bean name="CashTableForm" type="fr.montagnesdor.restaurant.struts.forms.CashTableForm"/>	  	
+	  	<form-bean name="PasswordChangeOrdersForm" type="fr.montagnesdor.restaurant.struts.forms.PasswordChangeOrdersForm"/>	  	
+	    <form-bean name="ChangeEntryDateForm" type="fr.montagnesdor.restaurant.struts.forms.ChangeEntryDateForm"/>
+	    <form-bean name="SaveOrUpdateProductForm" type="fr.montagnesdor.restaurant.struts.forms.SaveOrUpdateProductForm"/>
+	    <form-bean name="SaveOrUpdateCategoryForm" type="fr.montagnesdor.restaurant.struts.forms.SaveOrUpdateCategoryForm"/>
+	    <form-bean name="PurgeStatsConsumptionProductsForm" type="fr.montagnesdor.restaurant.struts.forms.PurgeStatsConsumptionProductsForm"/>
+	    <form-bean name="SearchStatsConsumptionProductsForm" type="fr.montagnesdor.restaurant.struts.forms.SearchStatsConsumptionProductsForm"/>
+	    <form-bean name="CustomerBillInfoForm" type="fr.montagnesdor.restaurant.struts.forms.CustomerBillInfoForm"/>
+	</form-beans>
+
+	<!-- ========== Global Forward Definitions ============================== -->
+	<global-forwards>
+	    <forward   name="error"           							path="/jsp/commons/error.jsp"/>
+	    <forward   name="sessionInvalide"					path="/index.jsp"/>
+	    <forward   name="entryPoint"	      					path="/EntryPoint.do"/>
+	    <forward   name="logon"      								path="/Logon.do"/>
+		<forward   name="authorizationFailed"      		path="/AuthorizationFailed.do"/>
+	    <forward   name="index"      								path="/index.jsp"/>
+		<forward   name="successTest" 						path="/Test.do"/>
+	</global-forwards>
+
+  	<!-- ========== Action Mapping Definitions ============================== -->
+	<action-mappings>
+
+	    <!-- Test -->
+	    <action path="/Test" type="fr.montagnesdor.restaurant.struts.actions.TestAction" scope="request">
+	    	<forward   name="success" path="/jsp/test.jsp"/>
+	    </action>
+	
+		<!-- Commons -->
+	    <action path="/EntryPoint" type="fr.montagnesdor.restaurant.struts.actions.EntryPointAction" scope="request">
+	    	<forward   name="success" path="/jsp/logon.jsp"/>
+	    </action>
+	    <action path="/AuthorizationFailed" type="fr.montagnesdor.restaurant.struts.actions.AuthorizationFailedAction" scope="request">
+	    	<forward   name="success" path="/jsp/authorizationFailed.jsp"/>
+	    </action>
+	    <action path="/MenuTop" type="fr.montagnesdor.restaurant.struts.actions.MenuTopAction" scope="request">
+	    	<forward   name="success" path="/jsp/commons/menuPrincipal.jsp"/>
+	    </action>
+	    <action path="/ChangeLanguage" type="fr.montagnesdor.restaurant.struts.actions.ChangeLanguageAction" scope="request">
+	    	<forward   name="success" path="/jsp/commons/template.jsp"/>    
+	    </action>
+	    <action path="/ChangeEntryDate" type="fr.montagnesdor.restaurant.struts.actions.ChangeEntryDateAction" name="ChangeEntryDateForm" scope="request" input="/jsp/commons/changeEntryDate.jsp">
+	    	<forward   name="success" path="/jsp/commons/closePopupChangeEntryDate.jsp"/>    
+	    </action>
+	    <action path="/DisplayJsp" type="fr.montagnesdor.restaurant.struts.actions.DisplayJspAction" scope="request">
+		    <forward name="errorChangeUserPassword" path="/jsp/commons/errorChangeUserPassword.jsp"/>
+	    	<forward name="successChangeUserPassword0" path="/jsp/userinfos/changeUserPassword.jsp"/>
+	    	<forward name="successChangeUserPassword1" path="/jsp/userinfos/changeUserPassword.jsp"/>
+	    	<forward name="successChangeUserPassword2" path="/jsp/userinfos/changeUserPassword.jsp"/>
+	    	<forward name="successChangeUserPassword3" path="/jsp/userinfos/changeUserPassword.jsp"/>
+	    	<forward name="successPrintingConfiguration" path="/jsp/userinfos/printingConfiguration.jsp"/>
+			<forward name="successMergeTable" path="/jsp/orders/mergeTable.jsp"/>
+			<forward name="successChangeTable" path="/jsp/orders/changeTable.jsp"/>
+			<forward name="successCustomerBillInfo" path="/jsp/orders/customerBillInfo.jsp"/>
+			<forward name="successPrintTable" path="/jsp/orders/printTable.jsp"/>
+			<forward name="successCashTable" path="/jsp/orders/cashTable.jsp"/>
+			<forward name="successDeleteTable" path="/jsp/orders/deleteTable.jsp"/>
+			<forward name="successOrderTable" path="/jsp/orders/tableOrdersIFrame.jsp"/>
+			<forward name="successPasswordChangeOrders" path="/jsp/orders/passwordChangeOrders.jsp"/>
+			<forward name="successChangeEntryDate" path="/jsp/commons/changeEntryDate.jsp"/>
+			<forward name="successSearchProducts" path="/jsp/menus/products/searchProducts.jsp"/>
+			<forward name="successPrintTableByCashing" path="/jsp/daylyReceipts/printTable.jsp"/>
+			<forward name="successModifyCashTable" path="/jsp/daylyReceipts/cashTable.jsp"/>
+			<forward name="successCreateBillsTable" path="/jsp/orders/createBillsTable.jsp"/>
+			<forward name="successCreateCreditsTable" path="/jsp/orders/createCreditsTable.jsp"/>
+			<forward name="successUploadDailyReceiptsList" path="/jsp/daylyReceipts/dailyReceiptsListUpload.jsp"/>
+	    </action>
+	
+	    <!-- Process User -->
+	    <action path="/Logon" type="fr.montagnesdor.restaurant.struts.actions.LogonAction" name="LogonForm" scope="request" input="/jsp/logon.jsp">
+	    	<forward   name="success" path="/RedirectLogonToJspTemplate.do"/>    
+	    </action>
+	    <action path="/RedirectLogonToJspTemplate" type="fr.montagnesdor.restaurant.struts.actions.RedirectLogonToJspTemplateAction" scope="request">
+	    	<forward   name="success" path="/jsp/commons/template.jsp"/>    
+	    </action>
+	    <action path="/UserInfosIFrame" type="fr.montagnesdor.restaurant.struts.actions.UserInfosIFrameAction" scope="request">
+    		<forward   name="success" path="/jsp/userinfos/userInfosIFrame.jsp"/>
+	    </action>
+	    <action path="/ChangeUserPassword" type="fr.montagnesdor.restaurant.struts.actions.ChangeUserPasswordAction" name="ChangeUserPasswordForm" scope="request" input="/jsp/userinfos/changeUserPassword.jsp">
+	    	<forward   name="success" path="/UserInfosIFrame.do"/>    
+	    </action>
+	    <action path="/ChangePrintLanguage" type="fr.montagnesdor.restaurant.struts.actions.ChangePrintLanguageAction">
+	    	<forward   name="success" path="/UserInfosIFrame.do"/>    
+	    </action>
+	    
+	    <!-- Process Orders -->
+	    <action path="/TablesListExcludeCashedTableIFrame" type="fr.montagnesdor.restaurant.struts.actions.TablesListExcludeCashedTableIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/orders/tablesListExcludeCashedTableIFrame.jsp"/>
+	    </action>
+	    <action path="/TableOrdersIFrame" type="fr.montagnesdor.restaurant.struts.actions.TableOrdersIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/orders/tableOrdersIFrame.jsp"/>
+	    </action>
+	    <action path="/MergeTable" type="fr.montagnesdor.restaurant.struts.actions.MergeTableAction" name="MergeTableForm" scope="request" input="/jsp/orders/mergeTable.jsp">
+	    	<forward name="success" path="/jsp/commons/updateMenuTop.jsp"/>    
+	    </action>
+	    <action path="/ChangeTable" type="fr.montagnesdor.restaurant.struts.actions.ChangeTableAction" name="ChangeTableForm" scope="request" input="/jsp/orders/changeTable.jsp">
+	    	<forward name="success" path="/jsp/commons/updateMenuTop.jsp"/>    
+	    </action>
+	    <action path="/CustomerBillInfo" type="fr.montagnesdor.restaurant.struts.actions.CustomerBillInfoAction" name="CustomerBillInfoForm" scope="request" input="/jsp/orders/customerBillInfo.jsp">
+	    	<forward name="success" path="/jsp/orders/printTable.jsp"/>	
+	    </action>
+	    <action path="/PrintTable" type="fr.montagnesdor.restaurant.struts.actions.PrintTableAction" scope="request">
+	    	<forward name="successTableOrdersIFrame" path="/TableOrdersIFrame.do"/>	    	
+	    	<forward name="successTablesListIFrame" path="/TablesListExcludeCashedTableIFrame.do"/>	    	
+	    </action>
+	    <action path="/CreateBillsTable" type="fr.montagnesdor.restaurant.struts.actions.CreateBillsTableAction" scope="request">
+	    	<forward name="success" path="/jsp/orders/printBillsTable.jsp"/>
+	    </action>
+	    <action path="/CreateCreditsTable" type="fr.montagnesdor.restaurant.struts.actions.CreateCreditsTableAction" scope="request">
+	    	<forward name="success" path="/TableOrdersIFrame.do"/>
+	    </action>
+	    <action path="/RemoveBillsTable" type="fr.montagnesdor.restaurant.struts.actions.RemoveBillsTableAction" scope="request">
+			<forward name="success" path="/jsp/orders/createBillsTable.jsp"/>
+	    </action>
+	    <action path="/CashTable" type="fr.montagnesdor.restaurant.struts.actions.CashTableAction" name="CashTableForm" scope="request" input="/jsp/orders/cashTable.jsp">
+	    	<forward name="successUserInfosIFrame" path="/UserInfosIFrame.do"/>	    	
+	    	<forward name="successTablesListIFrame" path="/TablesListExcludeCashedTableIFrame.do"/>	    	
+	    	<forward name="successDaylyReceiptsListIFrame" path="/DaylyReceiptsListIFrame.do"/>	    	
+	    </action>
+	    <action path="/DeleteTable" type="fr.montagnesdor.restaurant.struts.actions.DeleteTableAction" scope="request">
+	    	<forward name="successTableOrdersIFrame" path="/UserInfosIFrame.do"/>	    	
+	    	<forward name="successTablesListIFrame" path="/TablesListExcludeCashedTableIFrame.do"/>	    	
+	    </action>
+	    <action path="/PasswordChangeOrders" type="fr.montagnesdor.restaurant.struts.actions.PasswordChangeOrdersAction" name="PasswordChangeOrdersForm" scope="request" input="/jsp/orders/passwordChangeOrders.jsp">
+    		<forward name="success" path="/jsp/orders/tableOrdersIFrame.jsp"/>
+	    </action>
+
+
+	    <!-- Process Menus -->
+	    <action path="/ProductsListIFrame" type="fr.montagnesdor.restaurant.struts.actions.ProductsListIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/menus/products/productsListIFrame.jsp"/>
+	    </action>
+	    <action path="/SearchProductsList" type="fr.montagnesdor.restaurant.struts.actions.SearchProductsListAction" scope="request">
+    		<forward name="success" path="/jsp/menus/products/productsListIFrame.jsp"/>
+	    </action>
+	    <action path="/SaveOrUpdateProduct" type="fr.montagnesdor.restaurant.struts.actions.SaveOrUpdateProductAction" name="SaveOrUpdateProductForm" scope="request" input="/jsp/menus/products/saveOrUpdateProduct.jsp">
+			<forward name="successSearched" path="/SearchProductsList.do"/>
+    		<forward name="success" path="/ProductsListIFrame.do"/>
+    		<forward name="error" path="/jsp/menus/products/error.jsp"/>
+	    </action>
+	    <action path="/CategoriesListIFrame" type="fr.montagnesdor.restaurant.struts.actions.CategoriesListIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/menus/categories/categoriesListIFrame.jsp"/>
+	    </action>
+	    <action path="/SaveOrUpdateCategory" type="fr.montagnesdor.restaurant.struts.actions.SaveOrUpdateCategoryAction" name="SaveOrUpdateCategoryForm" scope="request" input="/jsp/menus/categories/saveOrUpdateCategory.jsp">
+    		<forward name="success" path="/CategoriesListIFrame.do"/>
+    		<forward name="error" path="/jsp/menus/categories/error.jsp"/>
+	    </action>
+	    <action path="/StatsConsumptionProductsListIFrame" type="fr.montagnesdor.restaurant.struts.actions.StatsConsumptionProductsListIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/menus/statsconsumptionproducts/statsConsumptionProductsListIFrame.jsp"/>
+	    </action>
+	    <action path="/SearchStatsConsumptionProducts" type="fr.montagnesdor.restaurant.struts.actions.SearchStatsConsumptionProductsAction" name="SearchStatsConsumptionProductsForm" scope="request" input="/jsp/menus/statsconsumptionproducts/searchStatsConsumptionProducts.jsp">
+    		<forward name="success" path="/jsp/menus/statsconsumptionproducts/statsConsumptionProductsListIFrame.jsp"/>
+	    </action>
+	    <action path="/PurgeStatsConsumptionProducts" type="fr.montagnesdor.restaurant.struts.actions.PurgeStatsConsumptionProductsAction" name="PurgeStatsConsumptionProductsForm" scope="request" input="/jsp/menus/statsconsumptionproducts/purgeStatsConsumptionProducts.jsp">
+    		<forward name="success" path="/StatsConsumptionProductsListIFrame.do"/>
+	    </action>
+	    <action path="/DownloadStatsConsumptionProductsList" type="fr.montagnesdor.restaurant.struts.actions.DownloadStatsConsumptionProductsListAction" scope="request">
+    		<forward name="success" path="/jsp/menus/statsconsumptionproducts/downloadStatsConsumptionProductsList.jsp"/>
+	    </action>
+
+	    <!-- Process Daily Receipts -->
+	    <action path="/DaylyReceiptsListIFrame" type="fr.montagnesdor.restaurant.struts.actions.DaylyReceiptsListIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/daylyReceipts/daylyReceiptsListIFrame.jsp"/>
+    		<forward name="successDownload" path="/jsp/daylyReceipts/dailyReceiptsListDownload.jsp"/>
+	    </action>
+	    <action path="/DaylyReceiptsListUpload" type="fr.montagnesdor.restaurant.struts.actions.DaylyReceiptsListUploadAction" scope="request">
+    		<forward name="success" path="/DaylyReceiptsListIFrame.do"/>
+	    </action>
+	    <action path="/PrintReceipts" type="fr.montagnesdor.restaurant.struts.actions.PrintReceiptsAction" scope="request">
+	    	<forward name="success" path="/jsp/daylyReceipts/printDaylyReceipts.jsp"/>
+	    </action>
+	    <action path="/CloseOrMergeReceipts" type="fr.montagnesdor.restaurant.struts.actions.CloseOrMergeReceiptsAction" scope="request">
+    		<forward name="success" path="/DaylyReceiptsListIFrame.do"/>
+	    </action>
+	    <action path="/DeleteCashing" type="fr.montagnesdor.restaurant.struts.actions.DeleteCashingAction" scope="request">
+    		<forward name="success" path="/DaylyReceiptsListIFrame.do"/>
+	    </action>
+
+	    <!-- Process Monthly Receipts -->
+	    <action path="/MonthlyReceiptsListIFrame" type="fr.montagnesdor.restaurant.struts.actions.MonthlyReceiptsListIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/monthlyReceipts/monthlyReceiptsListIFrame.jsp"/>
+	    </action>
+	    <action path="/DownloadMonthlyReceiptsList" type="fr.montagnesdor.restaurant.struts.actions.DownloadMonthlyReceiptsListAction" scope="request">
+    		<forward name="success" path="/jsp/monthlyReceipts/downloadMonthlyReceiptsList.jsp"/>
+	    </action>
+	    
+
+
+ 	</action-mappings>
+</struts-config>

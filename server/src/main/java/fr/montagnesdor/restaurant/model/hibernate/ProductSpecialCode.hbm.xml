@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.ProductSpecialCode" table="t_product_special_code">
+                <id name="id" column="psc_id" type="long">
+                        <generator class="increment"/>
+                </id>
+                <property name="code" column="psc_code" type="string"/>
+        </class>
+
+</hibernate-mapping>

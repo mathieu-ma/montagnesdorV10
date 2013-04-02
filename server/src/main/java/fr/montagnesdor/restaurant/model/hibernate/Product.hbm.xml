@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.Product" table="t_product">
+                <id name="id" column="pdt_id" type="string">
+                 	<generator class="assigned" />
+                </id>
+                <many-to-one name="productSpecialCode"  insert="false" column="psc_id"/>
+                <property name="price" column="pdt_price" type="float"/>
+                <property name="colorRGB" column="pdt_colorRGB" type="string"/>
+				<many-to-one name="vat" column="vat_id"/>
+		
+                <map name="labels" table="t_product_language" lazy="false">
+            		<key column="pdt_id"/>
+            		<index column="loc_id" type="string"/>
+                	<element column="pdl_label" type="string"/>
+        		</map>
+        </class>
+
+</hibernate-mapping>

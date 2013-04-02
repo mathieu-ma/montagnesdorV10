@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.UserLocale" table="t_user_locale">
+                <id name="id" column="ulo_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<many-to-one name="user" column="usr_id" class="fr.montagnesdor.restaurant.model.hibernate.User"/>
+				<many-to-one name="locale" column="loc_id" class="fr.montagnesdor.restaurant.model.hibernate.Locale"/>
+        </class>
+
+</hibernate-mapping>

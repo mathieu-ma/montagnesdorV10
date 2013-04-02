@@ -1,0 +1,401 @@
+dl, dt, dd, ul, li	{
+						margin: 0;
+						padding: 0;
+						list-style-type: none;
+					}
+
+#menuRight li.selectedWhite	{
+								background-color: #FFFFFF; 
+							}					
+						
+#menuRight dt 	{
+				cursor: pointer;
+				background: #A9BFCB;
+				margin: 0px 0px;
+				border: 2px solid gray;
+				text-align: center;
+				font-weight: bold;
+				width: 100%;
+				height: 100%;								
+			}
+#menuRight dd 	{
+				position: absolute;
+				z-index: 100;
+				left: 5em;
+				margin-top: -1.4em;
+				width: 10em;
+				background: #A9BFCB;
+				border: 1px solid gray;
+			}
+#menuRight ul 	{
+				padding: 2px;
+			}
+#menuRight li a:hover	{
+							text-decoration: underline;
+						}
+#menuRight	{
+				position: relative;
+				z-index: 500;
+				height: 100%;				
+			}
+
+#menuDown	{
+				position: relative;
+				top: 0;
+				left: 0;
+				z-index:100;
+				width: 100%;
+			}
+#menuDown dl 	{
+					float: left;
+					width: 12em;
+					margin: 0 1px;
+				}
+#menuDown dt 	{
+					cursor: pointer;
+					text-align: center;
+					font-weight: bold;
+					background: #A9BFCB;
+					border: 2px solid gray;
+				}
+#menuDown dd 	{
+					position: absolute;
+					border: 1px solid gray;
+				}
+#menuDown li.selectedWhite	{
+								background-color: #FFFFFF; 
+							}					
+#menuDown li 	{
+					text-align: center;
+					background: #A9BFCB;
+				}
+#menuDown li a:hover	{
+							text-decoration: underline;
+						}		
+
+input 		{
+				height: 19;
+				border-width: 0;
+			}
+
+input.logon 	{
+								text-align: left; 
+								padding-left: 2em; 
+								display: inline;
+								width: 60%;
+							}
+input.password 	{
+								text-align: left; 
+								padding-left: 2em; 
+								display: inline
+							}
+input.text 			{
+								text-transform: uppercase;
+								text-align: left; 
+								padding-left: 2em; 
+								display: inline
+							}
+input.string		{
+								text-align: left;
+								padding-left: 2em;
+								width:90%;
+								display: inline;
+					}
+										
+input.yellowPage	{
+				 						text-align: left; 
+				 						padding-left: 2em; 
+				 						background-color: yellow; 
+				 						width:100%;	
+			 					}
+input.reductionRatioYellow	{
+				 						text-align: right; 
+				 						background-color: yellow; 
+				 						width:100%;	
+			 					}
+input.reductionRatioRed		{
+				 						text-align: right; 
+				 						background-color: red; 
+				 						width:100%;	
+			 					}
+input.quantity 			{
+								text-transform: uppercase;
+								text-align: left; 
+								padding-left: 2em; 
+								display: inline;
+								width:95%;								
+							}
+input.code 			{
+								text-transform: uppercase;
+								text-align: left; 
+								padding-left: 2em; 
+								display: inline;
+								width:95%;								
+							}
+input.label 			{
+								text-transform: uppercase;
+								text-align: left; 
+								padding-left: 2em; 
+								display: inline;
+								width:99%;								
+							}
+
+input.price 			{
+								text-transform: uppercase;
+								text-align: left; 
+								padding-left: 2em; 
+								display: inline;
+								width:95%;								
+							}							
+input.cash 				{
+								text-transform: uppercase;
+								text-align: right; 
+								padding-right: 2em; 
+								display: inline
+						}
+input.amount 				{
+								text-transform: uppercase;
+								text-align: right; 
+								padding-right: 2em; 
+								display: inline
+						}
+input.customerNumber	{
+								text-transform: uppercase;
+								text-align: right; 
+								padding-right: 2em; 
+								display: inline
+						}					
+label.policeGray	{
+								color: #CCCCCC;
+					}			
+table.border	{
+						border-style: inset;
+						background-color: #660000; 
+						border-color: #FFCC00
+					}
+tr.default	{
+				}					
+tr.pointer		{
+					cursor: pointer;
+				}					
+tr.over		{
+					background-color: blue; 
+				}					
+tr.unpaid		{
+					background-color: red; 
+				}					
+td			{ 
+				font-family: "Times New Roman", Times, serif; font-size: 12px; 
+				font-weight: bolder; 
+				color: #FFCC00;
+				text-decoration: none;
+			}
+
+td.selectedWhite	{
+						text-align: center;
+						border-style: inset;
+						height: 31;
+						background-color: #FFFFFF; 
+					}
+td.footer	{ 
+					font-family: "Times New Roman", Times, serif; font-size: 20px; 
+					text-align: right;
+					height: 28;
+					width: 5%;
+			}
+td.left	{ 
+				text-align: left;
+			}
+td.center	{ 
+					text-align: center;
+				}
+td.right	{ 
+				text-align: right;
+			}
+td.border	{ 
+					text-align: center;
+					border-style: inset;
+					height: 31;
+				}
+td.border100	{ 
+					text-align: center;
+					border-style: inset;
+					height: 31;
+					width: 100%;
+				}
+td.quantity	{ 
+						text-align: right;
+						border-style: inset;
+						padding-right: 1em; 
+					height: 31;
+						width: 9%;
+					}
+td.code		{ 
+						text-align: center;
+						border-style: inset;
+					height: 31;
+						width: 9%;
+					}
+td.label		{ 
+					text-align: left;
+					border-style: inset;
+					height: 31;
+					padding-left: 2em; 
+					width: 64%;
+					}
+td.price		{ 
+									text-align: right;
+									border-style: inset;
+					height: 31;
+
+									padding-right: 1em; 
+									width: 9%;
+					}
+td.amount	{ 
+									text-align: right;
+									border-style: inset;
+					height: 31;
+
+									padding-right: 1em; 
+									width: 9%;
+					}
+td.quantityCenter	{ 
+									text-align: center;
+									border-style: inset;
+					height: 31;
+
+									width: 9%;
+								}
+td.codeCenter			{ 
+									text-align: center;
+									border-style: inset;
+					height: 31;
+
+									width: 9%;
+								}
+td.labelCenter			{ 
+									text-align: center;
+									border-style: inset;
+					height: 31;
+
+									width: 64%;
+								}
+td.priceCenter		{ 
+						text-align: center;
+						border-style: inset;
+						height: 31;
+						width: 9%;
+					}
+
+td.billPinting		{
+						text-align: center;
+						border-style: inset;
+						width: 10%;
+					}
+td.billMeal			{
+						text-align: center;
+						border-style: inset;
+						width: 12%;
+					}
+td.billAmount		{
+						text-align: center;
+						border-style: inset;
+						width: 15%;
+					}
+td.billOrder		{
+						text-align: center;
+						border-style: inset;
+						width: 13%;
+					}
+td.billReference	{
+						text-align: center;
+						border-style: inset;
+						width: 50%;
+					}
+
+td.creditAmount		{
+						text-align: center;
+						border-style: inset;
+						width: 50%;
+					}
+td.creditReference	{
+						text-align: center;
+						border-style: inset;
+						width: 50%;
+					}
+
+a			{  
+				display: block;
+				font-family: "Times New Roman", Times, serif; font-size: 12px; 
+				font-weight: bolder; 
+				color: #FFFFFF; 
+				text-decoration: none
+			}
+
+a.image		{  
+				display: inline;
+			}
+
+
+a.selectedWhite	{
+						color: darkblue;  
+						background-color: #FFFFFF; 
+					}
+a.blink	{
+				text-decoration: blink;
+				color: white;
+			}
+a.quantity	{
+						cursor: pointer;
+						color : #FFCC00;
+					}
+					
+a.confirm 			{  
+						font-family: "Times New Roman", Times, serif; font-size: 16px; 
+						font-weight: bolder; 
+						color: #0000FF; 
+						text-decoration: none
+					}
+a.cancel 			{  
+						font-family: "Times New Roman", Times, serif; font-size: 16px; 
+						font-weight: bolder; 
+						color: #FF00FF; 
+						text-decoration: none
+					}
+
+a.linkSelected		{  
+						color: #FFFF80; 
+					}
+select	{
+				width: 100%;
+				height: 100%;
+				font-family: "Times New Roman", Times, serif; font-size: 12px;
+		}
+
+img.flagSelected	{
+						border-color: white;
+						cursor: pointer;
+					}
+img.flagUnselected	{
+						border-color: #FFCC00;
+						cursor: pointer;
+					}
+
+applet 	{ 
+				height: 1;
+				width: 1;
+				background-color: #660000
+			}
+
+body		{
+				cursor: url('../images/panda.cur'), url('images/panda.cur'), auto;
+				background-image: url("./images/montagnesdor2.gif"); 
+				background-color: #660000; 
+				color: #FFCC00
+		 	}
+
+html.border		{
+							border-style: double;
+							border-width: 10px;
+							color: #FFCC00;
+						}

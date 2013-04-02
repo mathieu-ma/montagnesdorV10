@@ -1,0 +1,104 @@
+grant  Principal * * 
+{
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/Logon.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PointEntree.do";
+
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/AccesInterdit.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/AuthorizationFailed.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangeLanguage.do";	
+
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DisplayJsp.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/RedirectLogonToJspTemplate.do";
+
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangeUserPassword.do"; 		
+};
+
+
+grant Principal fr.montagnesdor.restaurant.jaas.authorization.TypedPrincipal "USER" 
+{
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/MenuTop.do";
+  	
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangerTable.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CumulerTable.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/EncaisserTable.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PasswordChangeDate.do";
+    
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/TablesListExcludeCashedTableIFrame.do";  	
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/UserInfosIFrame.do";  	
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautTableauUserInfos.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/OptionsMenuUserInfos.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosBasUserInfos.do";
+    
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/Commandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautTableauCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/OptionsMenuCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosBasCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PasswordChangeCommandes.do";
+  
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ListeTables.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautTableauTables.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/OptionsMenuTables.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosBasTables.do";
+};
+
+grant Principal fr.montagnesdor.restaurant.jaas.authorization.TypedPrincipal "ADMINISTRATOR" 
+{
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/MenuTop.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangeEntryDate.do";
+
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/TablesListExcludeCashedTableIFrame.do";  	
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/TableOrdersIFrame.do";	
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/MergeTable.do";	
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangeTable.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DeleteTable.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CustomerBillInfo.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PrintTable.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CreateBillsTable.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CreateCreditsTable.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/RemoveBillsTable.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CashTable.do";	
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PasswordChangeOrders.do";
+
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/UserInfosIFrame.do";  	
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautTableauUserInfos.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/OptionsMenuUserInfos.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosBasUserInfos.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangeUserPassword.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangePrintLanguage.do";
+    
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/Commandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautTableauCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/OptionsMenuCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosBasCommandes.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PasswordChangeCommandes.do";
+  
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ListeTables.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosHautTableauTables.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/OptionsMenuTables.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/InfosBasTables.do";
+
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DaylyReceiptsListIFrame.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PrintReceipts.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CloseOrMergeReceipts.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DeleteCashing.do";
+
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/MonthlyReceiptsListIFrame.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DownloadMonthlyReceiptsList.do";
+
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ProductsListIFrame.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/SearchProductsList.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/SaveOrUpdateProduct.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CategoriesListIFrame.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/SaveOrUpdateCategory.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/StatsConsumptionProductsListIFrame.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/SearchStatsConsumptionProducts.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DownloadStatsConsumptionProductsList.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PurgeStatsConsumptionProducts.do";
+  	
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DaylyReceiptsListUpload.do";
+  	
+};
+
+

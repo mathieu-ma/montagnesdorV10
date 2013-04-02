@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.DinnerTable" table="t_dinner_table">
+                <id name="id" column="dtb_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<many-to-one name="user" column="usr_id"/>                            
+				<property name="roo_id" column="roo_id" type="long"/>
+                <property name="number" column="dtb_number" type="string"/>
+                <property name="customersNumber" column="dtb_customers_number" type="integer"/>         
+                <property name="quantitiesSum" column="dtb_quantities_sum" type="float"/>
+                <property name="amountsSum" column="dtb_amounts_sum" type="float"/>
+                <property name="reductionRatio" column="dtb_reduction_ratio" type="float"/>
+                <property name="amountPay" column="dtb_amount_pay" type="float"/>
+                <property name="registrationDate" column="dtb_registration_date" type="timestamp"/>
+                <property name="printDate" column="dtb_print_date" type="timestamp"/>
+				<property name="cashingDate" column="dtb_cashing_date" type="date"/>                
+				<property name="reductionRatioChanged" column="dtb_reduction_ratio_changed" type="boolean"/>                				
+				<property name="takeaway" column="dtb_takeaway" type="boolean"/>                				
+								
+				<set name="orders" table="t_order_line" order-by="orl_id asc" inverse="true">
+            		<key column="dtb_id"/>
+                	<one-to-many class="fr.montagnesdor.restaurant.model.hibernate.OrderLine"/>
+        		</set>
+        		
+        		<map name="vats" table="t_vat_table" lazy="false" order-by="vat_id asc" inverse="true">
+            		<key column="dtb_id"/>
+            		<index-many-to-many column="vat_id" class="fr.montagnesdor.restaurant.model.hibernate.ValueAddedTax"/>
+            		<one-to-many class="fr.montagnesdor.restaurant.model.hibernate.VatTable"/>
+        		</map>
+        </class>
+        
+
+</hibernate-mapping>

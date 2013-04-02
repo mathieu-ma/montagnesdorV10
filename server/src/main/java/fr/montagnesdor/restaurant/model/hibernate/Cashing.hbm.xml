@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.Cashing" table="t_cashing">
+                <id name="id" column="csh_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<many-to-one name="dinnerTable" column="dtb_id"/>
+                <property name="cash" column="csh_cash" type="float"/>
+                <property name="ticket" column="csh_ticket" type="float"/>
+                <property name="cheque" column="csh_cheque" type="float"/>
+                <property name="card" column="csh_card" type="float"/>
+                <property name="unpaid" column="csh_unpaid" type="float"/>
+        </class>
+
+</hibernate-mapping>

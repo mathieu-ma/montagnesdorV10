@@ -1,0 +1,1 @@
+java -classpath ..\..\..\..\lib\mysql-connector-java-3.1.7-bin.jar;.;..\..\..\..\classes fr.montagnesdor.util.MigrateMDOMysqlToPostgresql
