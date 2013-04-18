@@ -62,6 +62,11 @@
 				<version>${jopendocument.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons.fileupload.version}</version>
+			</dependency>		
+			<dependency>
 				<groupId>struts</groupId>
 				<artifactId>struts</artifactId>
 				<version>${struts.version}</version>
@@ -181,6 +186,7 @@
 		<hibernate.version>2.1.2</hibernate.version>
 		<dom4j.version>1.4</dom4j.version>
 		<log4j.version>1.2.17</log4j.version>
+		<commons.fileupload.version>1.0</commons.fileupload.version>
 		<struts.version>1.1</struts.version>
 		<taglibs.standard.version>1.0.6</taglibs.standard.version>
 		<jstl.version>1.2</jstl.version>
