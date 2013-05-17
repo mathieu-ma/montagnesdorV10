@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/c.tld" prefix="c" %>
 <%@ taglib uri="/WEB-INF/fmt.tld" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/fn.tld" prefix="fn" %>
@@ -23,8 +24,22 @@
 	<c:set var="numberCustomers" value="0"/>
 	<c:set var="sumQuantities" value="0"/>
 	<c:set var="sumAmounts" value="0"/>
+	<table class="border" width='100%'>
+		<logic:messagesPresent>
+			<tr onmouseover="this.className='over';" onmouseout="this.className='default';"> 
+				<td class="border"><b><font color="#FFCC00">|</font></b></td>
+	    		<td class="border" colspan="13"> 
+					<fmt:message key="tablesList.error.import.takeaway.orders"/><br/>
+				      <ul id="errors">
+				         <html:messages id="msg">
+				            <li>${msg}</li>
+				         </html:messages>
+				      </ul>
+   				</td>
+				<td class="border"><b><font color="#FFCC00">|</font></b></td>
+			</tr>	
+		</logic:messagesPresent>
 	<c:if test="${not empty tablesList}">
-		<table class="border" width='100%'>
 		<c:forEach var="dinnerTable" items="${tablesList}" varStatus="status">
 			<c:if test="${status.last}" >
 				<c:set var="numberTables" value="${status.index+1}"/>
@@ -78,8 +93,8 @@
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 			</tr>
 		</c:forEach>	
-		</table>
 	</c:if>
+	</table>
 	<form name="modifyTableForm" action="<c:out value="${pageContext.request.contextPath}"/>/DisplayJsp.do" method="post" onsubmit="return false" target="IFrameData">
 		<input type="hidden" name="pageRequested" value="successMergeTable">
 		<input type="hidden" name='tableId'>
@@ -92,7 +107,13 @@
 			<table width="90%" height="100%" cellspacing="0" cellpadding="0" border="0" >
 				<tr>
 					<td id="idTdDataOptions" width="15%" valign="top" title='Data Options'>
-						&nbsp;
+						<table class="border" width="95%">
+							<tr>
+						    	<td class="border"> 
+							      <a href="javascript:window.IFrameData.importTakeawayTables();" title="<fmt:message key="tablesList.title.import.takeaway.table" />"><fmt:message key="tablesList.title.import.takeaway.table" /></a>
+							    </td>
+							</tr>
+						</table>
 					</td>
 				</tr>					
 				<tr>
@@ -119,6 +140,7 @@
 										<OPTION <c:if test="${filterList=='2'}">selected</c:if> value="2"><fmt:message key="tablesList.label.list.tables.cash"/></OPTION>
 										<OPTION <c:if test="${filterList=='3'}">selected</c:if> value="3"><fmt:message key="tablesList.label.list.tables.takeaway"/></OPTION>
 										<OPTION <c:if test="${filterList=='4'}">selected</c:if> value="4"><fmt:message key="tablesList.label.list.tables.inplace"/></OPTION>
+										<OPTION <c:if test="${filterList=='5'}">selected</c:if> value="5"><fmt:message key="tablesList.label.list.tables.imported"/></OPTION>
 		 							</SELECT>
 								</td>
 							    <td class="border"><b><font color="#FFCC00">|</font></b></td>

@@ -196,7 +196,9 @@
 	    </action>
 	    
 	    <!-- Import Take-Away orders -->
-	    <action path="/ImportTakeAwayOrders" parameter="action" type="fr.montagnesdor.restaurant.struts.actions.ImportTakeAwayOrdersAction" scope="request" />
-	    
+	    <action path="/ImportTakeAwayOrders" parameter="action" type="fr.montagnesdor.restaurant.struts.actions.ImportTakeAwayOrdersAction" scope="request">
+    		<forward name="success" path="/TablesListExcludeCashedTableIFrame.do"/>
+	    </action>
+	    	    
  	</action-mappings>
 </struts-config>

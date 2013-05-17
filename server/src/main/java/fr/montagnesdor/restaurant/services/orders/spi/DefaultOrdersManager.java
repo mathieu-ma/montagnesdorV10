@@ -158,6 +158,11 @@ public class DefaultOrdersManager implements OrdersManager
 					//Tables sur place
 					criteria.add(Expression.eq("takeaway", Boolean.FALSE));
 				break;	
+				case 5:
+					//Imported orders
+					criteria.add(Expression.eq("takeaway", Boolean.TRUE));
+					criteria.add(Expression.like("number", "VAD%"));
+				break;	
 			}
 			
 			if(sortMonotony.equals("asc"))
