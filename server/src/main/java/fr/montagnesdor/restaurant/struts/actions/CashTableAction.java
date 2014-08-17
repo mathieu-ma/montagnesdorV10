@@ -70,9 +70,10 @@ public class CashTableAction extends Action
 		cashing.setTicket(cashTableForm.getTicket());
 		cashing.setCheque(cashTableForm.getCheque());
 		cashing.setCard(cashTableForm.getCard());
+		cashing.setOnline(cashTableForm.getOnline());
 		cashing.setUnpaid(cashTableForm.getUnpaid());
 		
-		float sum = cashing.getCash()+cashing.getTicket()+cashing.getCheque()+cashing.getCard()+cashing.getUnpaid();
+		float sum = cashing.getCash()+cashing.getTicket()+cashing.getCheque()+cashing.getCard()+cashing.getOnline()+cashing.getUnpaid();
 		if(FormatDecimal.compare(sum, dinnerTable.getAmountPay()))
 		{
         	String newDate = request.getParameter("newDate");

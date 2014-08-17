@@ -293,6 +293,9 @@ public class DefaultOrdersManager implements OrdersManager
 			preparedStatement.setLong(2, currentTable.getId().longValue());
 			preparedStatement.execute();
 			
+			q = session.getNamedQuery("VatTable.deleteByDinnerTable");
+			session.delete(q.getQueryString(), currentTable.getId(), new LongType());
+
 			q = session.getNamedQuery("DinnerTable.DeleteById");
 			session.delete(q.getQueryString(), currentTable.getId(), new LongType());
 

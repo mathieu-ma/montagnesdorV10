@@ -14,6 +14,7 @@ public final class CashTableForm extends ActionForm
 	private float ticket;
 	private float cheque;
 	private float card;
+	private float online;
 	private float unpaid;				
 
     // --------------------------------------------------------- Public Methods
@@ -26,7 +27,7 @@ public final class CashTableForm extends ActionForm
     public void reset(ActionMapping mapping, HttpServletRequest request)
     {
 		tableId = null;
-		cash = ticket = cheque = card = unpaid = 0;				
+		cash = ticket = cheque = card = online = unpaid = 0;				
     }
     
     
@@ -106,6 +107,22 @@ public final class CashTableForm extends ActionForm
 	{
 		card = f;
 	}
+
+	/**
+	 * @return the online
+	 */
+	public float getOnline() {
+		return online;
+	}
+
+
+	/**
+	 * @param online the online to set
+	 */
+	public void setOnline(float online) {
+		this.online = online;
+	}
+
 
 	/**
 	 * @param f

@@ -286,7 +286,7 @@ public class DefaultReceiptsManager implements ReceiptsManager
 		    {
 		        if(i==1)
 		            isTakeaway = false;
-				String query = "SELECT SUM(cashing.cash), SUM(cashing.ticket), SUM(cashing.cheque), SUM(cashing.card), SUM(cashing.unpaid), SUM(dinnerTable.amountPay) FROM DinnerTable AS dinnerTable, Cashing AS cashing WHERE dinnerTable.id = cashing.dinnerTable.id AND dinnerTable.cashingDate = :revenueDate AND dinnerTable.takeaway = :takeaway";
+				String query = "SELECT SUM(cashing.cash), SUM(cashing.ticket), SUM(cashing.cheque), SUM(cashing.card), SUM(cashing.online), SUM(cashing.unpaid), SUM(dinnerTable.amountPay) FROM DinnerTable AS dinnerTable, Cashing AS cashing WHERE dinnerTable.id = cashing.dinnerTable.id AND dinnerTable.cashingDate = :revenueDate AND dinnerTable.takeaway = :takeaway";
 				q = session.createQuery(query);
 			    q.setDate("revenueDate", revenueDate);
 		        q.setBoolean("takeaway", isTakeaway);
@@ -297,8 +297,9 @@ public class DefaultReceiptsManager implements ReceiptsManager
 				try{dayRevenue.setTicket(((Float)objects[1]).floatValue());}catch(Exception e){}
 				try{dayRevenue.setCheque(((Float)objects[2]).floatValue());}catch(Exception e){}
 				try{dayRevenue.setCard(((Float)objects[3]).floatValue());}catch(Exception e){}
-				try{dayRevenue.setUnpaid(((Float)objects[4]).floatValue());}catch(Exception e){}
-				try{dayRevenue.setAmount(((Float)objects[5]).floatValue());}catch(Exception e){}
+				try{dayRevenue.setOnline(((Float)objects[4]).floatValue());}catch(Exception e){}
+				try{dayRevenue.setUnpaid(((Float)objects[5]).floatValue());}catch(Exception e){}
+				try{dayRevenue.setAmount(((Float)objects[6]).floatValue());}catch(Exception e){}
 				dayRevenue.setRevenueDate(revenueDate);
 				dayRevenue.setTakeaway(isTakeaway);
 				criteria = session.createCriteria(DayRevenue.class).add(Expression.eq("takeaway", new Boolean(isTakeaway))).add(Expression.eq("revenueDate", revenueDate)); 
@@ -309,6 +310,7 @@ public class DefaultReceiptsManager implements ReceiptsManager
 				    dayRevenueByCriteria.setTicket(dayRevenue.getTicket()+dayRevenueByCriteria.getTicket());
 				    dayRevenueByCriteria.setCheque(dayRevenue.getCheque()+dayRevenueByCriteria.getCheque());
 				    dayRevenueByCriteria.setCard(dayRevenue.getCard()+dayRevenueByCriteria.getCard());
+				    dayRevenueByCriteria.setOnline(dayRevenue.getOnline()+dayRevenueByCriteria.getOnline());
 				    dayRevenueByCriteria.setUnpaid(dayRevenue.getUnpaid()+dayRevenueByCriteria.getUnpaid());
 				    dayRevenueByCriteria.setAmount(dayRevenue.getAmount()+dayRevenueByCriteria.getAmount());
 				}
@@ -583,8 +585,9 @@ public class DefaultReceiptsManager implements ReceiptsManager
 				    try{dayRevenue.setTicket(resultSet.getFloat(3));}catch(Exception e){}
 				    try{dayRevenue.setCheque(resultSet.getFloat(4));}catch(Exception e){}
 				    try{dayRevenue.setCard(resultSet.getFloat(5));}catch(Exception e){}
-				    try{dayRevenue.setUnpaid(resultSet.getFloat(6));}catch(Exception e){}
-				    try{dayRevenue.setAmount(resultSet.getFloat(7));}catch(Exception e){}
+				    try{dayRevenue.setOnline(resultSet.getFloat(6));}catch(Exception e){}
+				    try{dayRevenue.setUnpaid(resultSet.getFloat(7));}catch(Exception e){}
+				    try{dayRevenue.setAmount(resultSet.getFloat(8));}catch(Exception e){}
 				    result.add(dayRevenue);
 				}
 			}

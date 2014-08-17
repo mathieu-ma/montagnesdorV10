@@ -74,6 +74,15 @@
 					</tr>
 					<tr>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
+						<td class="border" width="50%"><a href="javascript:autoCompletion('online')"><fmt:message key="cashTable.jsp.label.online"/></a></td>
+						<td class="border"><b><font color="#FFCC00">|</font></b></td>
+						<td class="border" width="50%">
+							<input type='text' name='online' onkeyup='processUserEntry(event, this)' maxlength='10' class='cash'>
+						</td>			
+						<td class="border"><b><font color="#FFCC00">|</font></b></td>
+					</tr>
+					<tr>
+						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 						<td class="border" width="50%"><input type=checkbox name="unpaidCheck" onclick="checkUnpaid(this)"><label class="policeGray"><fmt:message key="cashTable.jsp.label.unpaid"/></label></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 						<td class="border" width="50%" id="idUnpaid">0.00</td>			

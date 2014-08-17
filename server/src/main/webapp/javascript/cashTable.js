@@ -3,6 +3,7 @@ var oldValueCash = "0.00";
 var oldValueTicket = "0.00";
 var oldValueCheque = "0.00";
 var oldValueCard = "0.00";
+var oldValueOnline = "0.00";
 
 function deleteCashing(cashingId)
 {
@@ -38,6 +39,7 @@ function submitCashTable()
 		document.forms[0].ticket.value = formatNumber(document.forms[0].ticket.value, 2);
 		document.forms[0].cheque.value = formatNumber(document.forms[0].cheque.value, 2);		
 		document.forms[0].card.value = formatNumber(document.forms[0].card.value, 2);		
+		document.forms[0].online.value = formatNumber(document.forms[0].online.value, 2);		
 		
 		//3) Encaisser la table
 		document.forms[0].action = contextPath+"/CashTable.do";
@@ -99,6 +101,10 @@ function calculateAmountReturned()
 		result += 0;
 	else
 		result += parseFloat(document.forms[0].card.value);
+	if(document.forms[0].online.value=="")
+		result += 0;
+	else
+		result += parseFloat(document.forms[0].online.value);
 
 	return result;
 }
@@ -175,6 +181,10 @@ function up(cell)
 			document.forms[0].cheque.focus();
 			moveCursorToRight(document.forms[0].cheque);
 		break;
+		case "online":
+			document.forms[0].card.focus();
+			moveCursorToRight(document.forms[0].card);
+		break;
 	}
 
 	if(cell.value!="")
@@ -197,6 +207,10 @@ function down(cell)
 		case "cheque":
 			document.forms[0].card.focus();
 			moveCursorToRight(document.forms[0].card);
+		break;
+		case "card":
+			document.forms[0].online.focus();
+			moveCursorToRight(document.forms[0].online);
 		break;
 	}
 
@@ -276,6 +290,7 @@ function checkUnpaid(check)
 			document.forms[0].ticket.readOnly=true;
 			document.forms[0].cheque.readOnly=true;
 			document.forms[0].card.readOnly=true;
+			document.forms[0].online.readOnly=true;
 		}
 	}
 	else
@@ -285,6 +300,7 @@ function checkUnpaid(check)
 		document.forms[0].ticket.readOnly=false;
 		document.forms[0].cheque.readOnly=false;
 		document.forms[0].card.readOnly=false;
+		document.forms[0].online.readOnly=false;
 	}
 
 	refreshOldValues();
@@ -300,6 +316,7 @@ function refreshOldValues()
 	oldValueTicket = formatNumber(document.forms[0].ticket.value, 2);
 	oldValueCheque = formatNumber(document.forms[0].cheque.value, 2);
 	oldValueCard = formatNumber(document.forms[0].card.value, 2);
+	oldValueOnline = formatNumber(document.forms[0].online.value, 2);
 }
 
 function checkEntry(cell)
@@ -313,7 +330,7 @@ function checkEntry(cell)
 		cell.value = cell.value.toUpperCase();
 		if(!cell.isValueEmpty || cell.isValueEmpty=='false')
 		{
-			var flag = ((cell.name=="cash" && oldValueCash!=cell.value) || (cell.name=="ticket" && oldValueTicket!=cell.value) || (cell.name=="cheque" && oldValueCheque!=cell.value) || (cell.name=="card" && oldValueCard!=cell.value)); 
+			var flag = ((cell.name=="cash" && oldValueCash!=cell.value) || (cell.name=="ticket" && oldValueTicket!=cell.value) || (cell.name=="cheque" && oldValueCheque!=cell.value) || (cell.name=="card" && oldValueCard!=cell.value) || (cell.name=="online" && oldValueOnline!=cell.value)); 
 			if(flag)
 			{
 				var lastEntry = cell.value.charAt(cell.value.length-1);
@@ -383,6 +400,11 @@ function processUserEntry(event, cell)
 		//65 �quivaut � la touche A
 		case 65 :
 			autoCompletion('card');
+		return;
+
+		//79 �quivaut � la touche O
+		case 79 :
+			autoCompletion('online');
 		return;
 	};
 }

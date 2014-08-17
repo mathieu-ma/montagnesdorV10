@@ -38,8 +38,7 @@ public final class DisplayJspAction extends Action
 			if(pageRequested.startsWith("successChangeUserPassword"))
 				pageRequested = pageRequested+request.getParameter("levelPassword");
 
-
-			if(pageRequested.equals("successPrintTable") || pageRequested.equals("successOrderTable"))
+			if(pageRequested.equals("successCustomerBillInfo") || pageRequested.equals("successPrintTable") || pageRequested.equals("successOrderTable"))
 			{
 				Room room  = (Room)userSession.getRoom();
 				//L'intérêt des instructions suivantes est de rafraîchir les lignes de commandes de la table courante au cas où l'utilisateur change de langue

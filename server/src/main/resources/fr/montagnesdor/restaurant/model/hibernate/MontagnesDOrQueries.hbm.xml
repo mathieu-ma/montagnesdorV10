@@ -139,7 +139,7 @@
 			WHERE drv_closing_date IS NOT NULL
 		</query>
 		<query name="SQL.DayRevenue.SelectAll">
-			SELECT drv_revenue_date as revenueDate, SUM(drv_cash) AS cash, SUM(drv_ticket) AS ticket, SUM(drv_cheque) AS cheque, SUM(drv_card) AS card, SUM(drv_unpaid) AS unpaid, SUM(drv_amount) AS amount
+			SELECT drv_revenue_date as revenueDate, SUM(drv_cash) AS cash, SUM(drv_ticket) AS ticket, SUM(drv_cheque) AS cheque, SUM(drv_card) AS card, SUM(drv_online) AS online, SUM(drv_unpaid) AS unpaid, SUM(drv_amount) AS amount
 			FROM t_day_revenue
 			WHERE drv_closing_date IS NOT NULL
 			AND TO_CHAR(drv_revenue_date, 'MM/yyyy') = ?

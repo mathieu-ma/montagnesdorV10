@@ -40,10 +40,12 @@
 	   		<input type="hidden" name="daylyReceiptsPrintLabelTicket" value="<fmt:message key="daylyReceipts.print.label.ticket"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelCheque" value="<fmt:message key="daylyReceipts.print.label.cheque"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelCard" value="<fmt:message key="daylyReceipts.print.label.card"/>">
+	   		<input type="hidden" name="daylyReceiptsPrintLabelOnline" value="<fmt:message key="daylyReceipts.print.label.online"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelSumCash" value="<fmt:message key="daylyReceipts.print.label.sum.cash"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelSumTicket" value="<fmt:message key="daylyReceipts.print.label.sum.ticket"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelSumCheque" value="<fmt:message key="daylyReceipts.print.label.sum.cheque"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelSumCard" value="<fmt:message key="daylyReceipts.print.label.sum.card"/>">
+	   		<input type="hidden" name="daylyReceiptsPrintLabelSumOnline" value="<fmt:message key="daylyReceipts.print.label.sum.online"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelSumUnpaid" value="<fmt:message key="daylyReceipts.print.label.sum.unpaid"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelSumCashingByTable" value="<fmt:message key="daylyReceipts.print.label.sum.cashing.by.table"/>">
 	   		<input type="hidden" name="daylyReceiptsPrintLabelDifference" value="<fmt:message key="daylyReceipts.print.label.difference"/>">
@@ -79,6 +81,7 @@
 			<c:set var="sumTicketsTAKEAWAY" value="0"/>
 			<c:set var="sumChequesTAKEAWAY" value="0"/>
 			<c:set var="sumCardsTAKEAWAY" value="0"/>
+			<c:set var="sumOnlinesTAKEAWAY" value="0"/>
 			<c:set var="sumUnpaidTAKEAWAY" value="0"/>
 			<c:set var="sumAmountsTAKEAWAY" value="0"/>
 			<c:set var="numberTablesINPLACE" value="0"/>
@@ -86,6 +89,7 @@
 			<c:set var="sumTicketsINPLACE" value="0"/>
 			<c:set var="sumChequesINPLACE" value="0"/>
 			<c:set var="sumCardsINPLACE" value="0"/>
+			<c:set var="sumOnlinesINPLACE" value="0"/>
 			<c:set var="sumUnpaidINPLACE" value="0"/>
 			<c:set var="sumAmountsINPLACE" value="0"/>
 			<c:forEach var="cashing" items="${cashingList}" varStatus="status">
@@ -95,6 +99,7 @@
 					<c:set var="sumTicketsTAKEAWAY" value="${sumTicketsTAKEAWAY+cashing.ticket}"/>
 					<c:set var="sumChequesTAKEAWAY" value="${sumChequesTAKEAWAY+cashing.cheque}"/>
 					<c:set var="sumCardsTAKEAWAY" value="${sumCardsTAKEAWAY+cashing.card}"/>
+					<c:set var="sumOnlinesTAKEAWAY" value="${sumOnlinesTAKEAWAY+cashing.online}"/>
 					<c:set var="sumUnpaidTAKEAWAY" value="${sumUnpaidTAKEAWAY+cashing.unpaid}"/>
 					<c:set var="sumAmountsTAKEAWAY" value="${sumAmountsTAKEAWAY+cashing.dinnerTable.amountPay}"/>
 					<input type="hidden" name='cashingDinnerTableNumberTAKEAWAY<c:out value="${numberTablesTAKEAWAY}"/>' value="<c:out value="${cashing.dinnerTable.number}"/>">		
@@ -102,6 +107,7 @@
 					<input type="hidden" name='cashingTicketTAKEAWAY<c:out value="${numberTablesTAKEAWAY}"/>' value="<fmt:formatNumber pattern="0.00" var="ticket" value="${cashing.ticket}"/><c:out value="${fn:replace(ticket, ',', '.')}" />">		
 					<input type="hidden" name='cashingChequeTAKEAWAY<c:out value="${numberTablesTAKEAWAY}"/>' value="<fmt:formatNumber pattern="0.00" var="cheque" value="${cashing.cheque}"/><c:out value="${fn:replace(cheque, ',', '.')}" />">		
 					<input type="hidden" name='cashingCardTAKEAWAY<c:out value="${numberTablesTAKEAWAY}"/>' value="<fmt:formatNumber pattern="0.00" var="card" value="${cashing.card}"/><c:out value="${fn:replace(card, ',', '.')}" />">		
+					<input type="hidden" name='cashingOnlineTAKEAWAY<c:out value="${numberTablesTAKEAWAY}"/>' value="<fmt:formatNumber pattern="0.00" var="online" value="${cashing.online}"/><c:out value="${fn:replace(online, ',', '.')}" />">		
 				</c:if>
 				<c:if test="${!cashing.dinnerTable.takeaway}" >
 					<c:set var="numberTablesINPLACE" value="${numberTablesINPLACE+1}"/>
@@ -109,6 +115,7 @@
 					<c:set var="sumTicketsINPLACE" value="${sumTicketsINPLACE+cashing.ticket}"/>
 					<c:set var="sumChequesINPLACE" value="${sumChequesINPLACE+cashing.cheque}"/>
 					<c:set var="sumCardsINPLACE" value="${sumCardsINPLACE+cashing.card}"/>
+					<c:set var="sumOnlinesINPLACE" value="${sumOnlinesINPLACE+cashing.online}"/>
 					<c:set var="sumUnpaidINPLACE" value="${sumUnpaidINPLACE+cashing.unpaid}"/>
 					<c:set var="sumAmountsINPLACE" value="${sumAmountsINPLACE+cashing.dinnerTable.amountPay}"/>
 					<input type="hidden" name='cashingDinnerTableNumberINPLACE<c:out value="${numberTablesINPLACE}"/>' value="<c:out value="${cashing.dinnerTable.number}"/>">		
@@ -116,6 +123,7 @@
 					<input type="hidden" name='cashingTicketINPLACE<c:out value="${numberTablesINPLACE}"/>' value="<fmt:formatNumber pattern="0.00" var="ticket" value="${cashing.ticket}"/><c:out value="${fn:replace(ticket, ',', '.')}" />">		
 					<input type="hidden" name='cashingChequeINPLACE<c:out value="${numberTablesINPLACE}"/>' value="<fmt:formatNumber pattern="0.00" var="cheque" value="${cashing.cheque}"/><c:out value="${fn:replace(cheque, ',', '.')}" />">		
 					<input type="hidden" name='cashingCardINPLACE<c:out value="${numberTablesINPLACE}"/>' value="<fmt:formatNumber pattern="0.00" var="card" value="${cashing.card}"/><c:out value="${fn:replace(card, ',', '.')}" />">		
+					<input type="hidden" name='cashingOnlineINPLACE<c:out value="${numberTablesINPLACE}"/>' value="<fmt:formatNumber pattern="0.00" var="online" value="${cashing.online}"/><c:out value="${fn:replace(online, ',', '.')}" />">		
 				</c:if>
 				<c:set var="totalSumAmounts" value="${totalSumAmounts+cashing.dinnerTable.amountPay}"/>
 			</c:forEach>
@@ -124,6 +132,7 @@
 			<input type="hidden" name='sumTicketsTAKEAWAY' value="<fmt:formatNumber pattern="0.00" var="sumTickets" value="${sumTicketsTAKEAWAY}"/><c:out value="${fn:replace(sumTickets, ',', '.')}" />">		
 			<input type="hidden" name='sumChequesTAKEAWAY' value="<fmt:formatNumber pattern="0.00" var="sumCheques" value="${sumChequesTAKEAWAY}"/><c:out value="${fn:replace(sumCheques, ',', '.')}" />">		
 			<input type="hidden" name='sumCardsTAKEAWAY' value="<fmt:formatNumber pattern="0.00" var="sumCards" value="${sumCardsTAKEAWAY}"/><c:out value="${fn:replace(sumCards, ',', '.')}" />">		
+			<input type="hidden" name='sumOnlinesTAKEAWAY' value="<fmt:formatNumber pattern="0.00" var="sumOnlines" value="${sumOnlinesTAKEAWAY}"/><c:out value="${fn:replace(sumOnlines, ',', '.')}" />">		
 			<input type="hidden" name='sumUnpaidTAKEAWAY' value="<fmt:formatNumber pattern="0.00" var="sumUnpaid" value="${sumUnpaidTAKEAWAY}"/><c:out value="${fn:replace(sumUnpaid, ',', '.')}" />">
 			<input type="hidden" name='sumAmountsTAKEAWAY' value="<fmt:formatNumber pattern="0.00" var="sumAmounts" value="${sumAmountsTAKEAWAY}"/><c:out value="${fn:replace(sumAmounts, ',', '.')}" />">
 			<input type="hidden" name='numberTablesINPLACE' value="<c:out value="${numberTablesINPLACE}"/>">		
@@ -131,6 +140,7 @@
 			<input type="hidden" name='sumTicketsINPLACE' value="<fmt:formatNumber pattern="0.00" var="sumTickets" value="${sumTicketsINPLACE}"/><c:out value="${fn:replace(sumTickets, ',', '.')}"/>">		
 			<input type="hidden" name='sumChequesINPLACE' value="<fmt:formatNumber pattern="0.00" var="sumCheques" value="${sumChequesINPLACE}"/><c:out value="${fn:replace(sumCheques, ',', '.')}"/>">		
 			<input type="hidden" name='sumCardsINPLACE' value="<fmt:formatNumber pattern="0.00" var="sumCards" value="${sumCardsINPLACE}"/><c:out value="${fn:replace(sumCards, ',', '.')}"/>">		
+			<input type="hidden" name='sumOnlinesINPLACE' value="<fmt:formatNumber pattern="0.00" var="sumOnlines" value="${sumOnlinesINPLACE}"/><c:out value="${fn:replace(sumOnlines, ',', '.')}"/>">		
 			<input type="hidden" name='sumUnpaidINPLACE' value="<fmt:formatNumber pattern="0.00" var="sumUnpaid" value="${sumUnpaidINPLACE}"/><c:out value="${fn:replace(sumUnpaid, ',', '.')}"/>">
 			<input type="hidden" name='sumAmountsINPLACE' value="<fmt:formatNumber pattern="0.00" var="sumAmounts" value="${sumAmountsINPLACE}"/><c:out value="${fn:replace(sumAmounts, ',', '.')}"/>">
 			

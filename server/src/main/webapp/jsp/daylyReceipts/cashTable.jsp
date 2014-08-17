@@ -85,6 +85,20 @@
 					</tr>
 					<tr>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
+						<td class="border" width="50%"><a href="javascript:autoCompletion('online')"><fmt:message key="cashTable.jsp.label.online"/></a></td>
+						<td class="border"><b><font color="#FFCC00">|</font></b></td>
+						<td class="border" width="50%">
+						<c:if test="${requestScope.attributesOut.unpaid!=0}">
+							<input type='text' name='online' readOnly onkeyup='processUserEntry(event, this)' maxlength='10' class='cash' value='<fmt:formatNumber pattern="0.00" var="payment" value="${requestScope.attributesOut.online}"/><c:out value="${fn:replace(payment, ',', '.')}" />'>
+						</c:if>
+						<c:if test="${requestScope.attributesOut.unpaid==0}">
+							<input type='text' name='online' onkeyup='processUserEntry(event, this)' maxlength='10' class='cash' value='<fmt:formatNumber pattern="0.00" var="payment" value="${requestScope.attributesOut.online}"/><c:out value="${fn:replace(payment, ',', '.')}" />'>
+						</c:if>
+						</td>			
+						<td class="border"><b><font color="#FFCC00">|</font></b></td>
+					</tr>
+					<tr>
+						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 						<td class="border" width="50%">
 						<c:if test="${requestScope.attributesOut.unpaid!=0}">
 							<input type=checkbox name="unpaidCheck" checked onclick="checkUnpaid(this)">

@@ -24,6 +24,7 @@
 	<c:set var="sumTickets" value="0"/>
 	<c:set var="sumCheques" value="0"/>
 	<c:set var="sumCards" value="0"/>
+	<c:set var="sumOnlines" value="0"/>
 	<c:set var="sumUnpaid" value="0"/>
 	<c:set var="sumAmounts" value="0"/>
 	<c:if test="${not empty cashingList}">
@@ -37,6 +38,7 @@
 				<c:set var="sumTickets" value="${sumTickets+cashing.ticket}"/>
 				<c:set var="sumCheques" value="${sumCheques+cashing.cheque}"/>
 				<c:set var="sumCards" value="${sumCards+cashing.card}"/>
+				<c:set var="sumOnlines" value="${sumOnlines+cashing.online}"/>
 				<c:set var="sumUnpaid" value="${sumUnpaid+cashing.unpaid}"/>
 				<c:set var="sumAmounts" value="${sumAmounts+cashing.dinnerTable.amountPay}"/>
 			<tr class="<c:if test="${cashing.unpaid==0}">default</c:if><c:if test="${cashing.unpaid!=0}">unpaid</c:if>" onmouseover="this.className='over';" onmouseout="<c:if test="${cashing.unpaid==0}">this.className='default';</c:if><c:if test="${cashing.unpaid!=0}">this.className='unpaid';</c:if>">			
@@ -52,6 +54,8 @@
 				<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="cheque" value="${cashing.cheque}"/><c:out value="${fn:replace(cheque, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="card" value="${cashing.card}"/><c:out value="${fn:replace(card, ',', '.')}" /></td>
+				<td class="border"><b><font color="#FFCC00">|</font></b></td>
+		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="online" value="${cashing.online}"/><c:out value="${fn:replace(online, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="unpaid" value="${cashing.unpaid}"/><c:out value="${fn:replace(unpaid, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
@@ -71,6 +75,7 @@
 				<c:set var="sumTickets" value="${sumTickets+cashing.ticket}"/>
 				<c:set var="sumCheques" value="${sumCheques+cashing.cheque}"/>
 				<c:set var="sumCards" value="${sumCards+cashing.card}"/>
+				<c:set var="sumOnlines" value="${sumOnlines+cashing.online}"/>
 				<c:set var="sumUnpaid" value="${sumUnpaid+cashing.unpaid}"/>
 				<c:set var="sumAmounts" value="${sumAmounts+cashing.dinnerTable.amountPay}"/>
 			<tr class="<c:if test="${cashing.unpaid==0}">default</c:if><c:if test="${cashing.unpaid!=0}">unpaid</c:if>" onmouseover="this.className='over';" onmouseout="<c:if test="${cashing.unpaid==0}">this.className='default';</c:if><c:if test="${cashing.unpaid!=0}">this.className='unpaid';</c:if>">			
@@ -86,6 +91,8 @@
 				<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="cheque" value="${cashing.cheque}"/><c:out value="${fn:replace(cheque, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="card" value="${cashing.card}"/><c:out value="${fn:replace(card, ',', '.')}" /></td>
+				<td class="border"><b><font color="#FFCC00">|</font></b></td>
+		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="online" value="${cashing.online}"/><c:out value="${fn:replace(online, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="unpaid" value="${cashing.unpaid}"/><c:out value="${fn:replace(unpaid, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
@@ -105,6 +112,7 @@
 				<c:set var="sumTickets" value="${sumTickets+cashing.ticket}"/>
 				<c:set var="sumCheques" value="${sumCheques+cashing.cheque}"/>
 				<c:set var="sumCards" value="${sumCards+cashing.card}"/>
+				<c:set var="sumOnlines" value="${sumOnlines+cashing.online}"/>
 				<c:set var="sumUnpaid" value="${sumUnpaid+cashing.unpaid}"/>
 				<c:set var="sumAmounts" value="${sumAmounts+cashing.dinnerTable.amountPay}"/>
 			<tr class="<c:if test="${cashing.unpaid==0}">default</c:if><c:if test="${cashing.unpaid!=0}">unpaid</c:if>" onmouseover="this.className='over';" onmouseout="<c:if test="${cashing.unpaid==0}">this.className='default';</c:if><c:if test="${cashing.unpaid!=0}">this.className='unpaid';</c:if>">			
@@ -120,6 +128,8 @@
 				<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="cheque" value="${cashing.cheque}"/><c:out value="${fn:replace(cheque, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="card" value="${cashing.card}"/><c:out value="${fn:replace(card, ',', '.')}" /></td>
+				<td class="border"><b><font color="#FFCC00">|</font></b></td>
+		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="online" value="${cashing.online}"/><c:out value="${fn:replace(online, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="unpaid" value="${cashing.unpaid}"/><c:out value="${fn:replace(unpaid, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
@@ -406,6 +416,8 @@
 							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
 							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='cashing.card'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('cashing.card');" title="<fmt:message key="daylyReceiptsIFrame.jsp.title.card"/>"><fmt:message key="daylyReceiptsIFrame.jsp.label.card"/></a></td>
 							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
+							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='cashing.online'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('cashing.online');" title="<fmt:message key="daylyReceiptsIFrame.jsp.title.online"/>"><fmt:message key="daylyReceiptsIFrame.jsp.label.online"/></a></td>
+							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
 							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='cashing.unpaid'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('cashing.unpaid');" title="<fmt:message key="daylyReceiptsIFrame.jsp.title.unpaid"/>"><fmt:message key="daylyReceiptsIFrame.jsp.label.unpaid"/></a></td>
 							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
 							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='cashing.dinnerTable.amountPay'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('cashing.dinnerTable.amountPay');" title="<fmt:message key="daylyReceiptsIFrame.jsp.title.amount"/>"><fmt:message key="daylyReceiptsIFrame.jsp.label.amount"/></a></td>
@@ -445,6 +457,9 @@
 						    <td width="1%"></td>
 						    <td width="5%"><label class="policeGray"><fmt:message key="daylyReceiptsIFrame.jsp.label.sum.card"/></label></td>
 						    <td class="footer" style="width: 9%"><fmt:formatNumber pattern="0.00" var="sumCards" value="${sumCards}"/><c:out value="${fn:replace(sumCards, ',', '.')}" /></td>
+						    <td width="1%"></td>
+						    <td width="5%"><label class="policeGray"><fmt:message key="daylyReceiptsIFrame.jsp.label.sum.online"/></label></td>
+						    <td class="footer" style="width: 9%"><fmt:formatNumber pattern="0.00" var="sumOnlines" value="${sumOnlines}"/><c:out value="${fn:replace(sumOnlines, ',', '.')}" /></td>
 						    <td width="1%"></td>
 						    <td width="5%"><label class="policeGray"><fmt:message key="daylyReceiptsIFrame.jsp.label.sum.unpaid"/></label></td>
 						    <td class="footer" style="width: 8%"><fmt:formatNumber pattern="0.00" var="sumUnpaid" value="${sumUnpaid}"/><c:out value="${fn:replace(sumUnpaid, ',', '.')}" /></td>

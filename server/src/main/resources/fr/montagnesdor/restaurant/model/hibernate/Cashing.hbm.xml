@@ -14,6 +14,7 @@
                 <property name="ticket" column="csh_ticket" type="float"/>
                 <property name="cheque" column="csh_cheque" type="float"/>
                 <property name="card" column="csh_card" type="float"/>
+                <property name="online" column="csh_online" type="float"/>
                 <property name="unpaid" column="csh_unpaid" type="float"/>
         </class>
 

@@ -38,6 +38,7 @@ public class DayRevenue
 	private float ticket;	
 	private float cheque;
 	private float card;
+	private float online;
 	private float unpaid;
 	private float amount;
 	//private TypeTable typeTable;
@@ -142,6 +143,20 @@ public class DayRevenue
 	public void setCard(float f)
 	{
 		card = f;
+	}
+
+	/**
+	 * @return the online
+	 */
+	public float getOnline() {
+		return online;
+	}
+
+	/**
+	 * @param online the online to set
+	 */
+	public void setOnline(float online) {
+		this.online = online;
 	}
 
 	/**

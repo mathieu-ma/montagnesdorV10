@@ -24,6 +24,7 @@
 	<c:set var="sumTickets" value="0"/>
 	<c:set var="sumCheques" value="0"/>
 	<c:set var="sumCards" value="0"/>
+	<c:set var="sumOnlines" value="0"/>
 	<c:set var="sumUnpaid" value="0"/>
 	<c:set var="sumAmounts" value="0"/>
 	<c:if test="${not empty dayRevenuesList}">
@@ -33,6 +34,7 @@
 			<c:set var="sumTickets" value="${sumTickets+dayRevenue.ticket}"/>
 			<c:set var="sumCheques" value="${sumCheques+dayRevenue.cheque}"/>
 			<c:set var="sumCards" value="${sumCards+dayRevenue.card}"/>
+			<c:set var="sumOnlines" value="${sumOnlines+dayRevenue.online}"/>
 			<c:set var="sumUnpaid" value="${sumUnpaid+dayRevenue.unpaid}"/>
 			<c:set var="sumAmounts" value="${sumAmounts+dayRevenue.amount}"/>
 			<c:set var="numberDays" value="${numberDays+1}"/>
@@ -47,6 +49,8 @@
 				<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="cheque" value="${dayRevenue.cheque}"/><c:out value="${fn:replace(cheque, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="card" value="${dayRevenue.card}"/><c:out value="${fn:replace(card, ',', '.')}" /></td>
+				<td class="border"><b><font color="#FFCC00">|</font></b></td>
+		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="online" value="${dayRevenue.online}"/><c:out value="${fn:replace(online, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
 		    	<td class="amount" style="width: 10%;"><fmt:formatNumber pattern="0.00" var="unpaid" value="${dayRevenue.unpaid}"/><c:out value="${fn:replace(unpaid, ',', '.')}" /></td>
 				<td class="border"><b><font color="#FFCC00">|</font></b></td>
@@ -188,6 +192,8 @@
 							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
 							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='card'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('card');" title="<fmt:message key="monthlyReceiptsIFrame.jsp.title.card"/>"><fmt:message key="monthlyReceiptsIFrame.jsp.label.card"/></a></td>
 							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
+							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='online'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('online');" title="<fmt:message key="monthlyReceiptsIFrame.jsp.title.online"/>"><fmt:message key="monthlyReceiptsIFrame.jsp.label.online"/></a></td>
+							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
 							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='unpaid'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('unpaid');" title="<fmt:message key="monthlyReceiptsIFrame.jsp.title.unpaid"/>"><fmt:message key="monthlyReceiptsIFrame.jsp.label.unpaid"/></a></td>
 							    <td class="border"><b><font color="#FFCC00">|</font></b></td>
 							    <td class="border" style="width: 10%;"><a <c:if test="${sortListBy=='amount'}">class='linkSelected'</c:if> href="javascript:window.IFrameData.processList('amount');" title="<fmt:message key="monthlyReceiptsIFrame.jsp.title.amount"/>"><fmt:message key="monthlyReceiptsIFrame.jsp.label.amount"/></a></td>
@@ -238,6 +244,9 @@
 						    <td width="1%"></td>
 						    <td width="5%"><label class="policeGray"><fmt:message key="monthlyReceiptsIFrame.jsp.label.sum.card"/></label></td>
 						    <td class="footer" style="width: 9%"><fmt:formatNumber pattern="0.00" var="sumCards" value="${sumCards}"/><c:out value="${fn:replace(sumCards, ',', '.')}" /></td>
+						    <td width="1%"></td>
+						    <td width="5%"><label class="policeGray"><fmt:message key="monthlyReceiptsIFrame.jsp.label.sum.online"/></label></td>
+						    <td class="footer" style="width: 9%"><fmt:formatNumber pattern="0.00" var="sumOnlines" value="${sumOnlines}"/><c:out value="${fn:replace(sumOnlines, ',', '.')}" /></td>
 						    <td width="1%"></td>
 						    <td width="5%"><label class="policeGray"><fmt:message key="monthlyReceiptsIFrame.jsp.label.sum.unpaid"/></label></td>
 						    <td class="footer" style="width: 8%"><fmt:formatNumber pattern="0.00" var="sumUnpaid" value="${sumUnpaid}"/><c:out value="${fn:replace(sumUnpaid, ',', '.')}" /></td>

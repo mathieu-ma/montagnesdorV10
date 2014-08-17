@@ -115,7 +115,8 @@ public final class DaylyReceiptsListIFrameAction extends Action
 				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.cash"),
 				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.ticket"), 
 				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.cheque"), 
-				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.card"), 
+				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.card"),
+				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.online"),
 				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.unpaid"), 
 				super.getResources(request).getMessage(currentUserLocale, "daylyReceiptsIFrame.jsp.label.amount")
 			};
@@ -123,7 +124,7 @@ public final class DaylyReceiptsListIFrameAction extends Action
 		Cashing cashing = null;
 		for (int i = 0; i < data.length; i++) {
 			cashing = (Cashing) cashingList.get(i);
-			data[i] = new Object[] { cashing.getId(),  cashing.getDinnerTable().getNumber(), cashing.getCash(), cashing.getTicket(), cashing.getCheque(), cashing.getCard(), cashing.getUnpaid(), cashing.getDinnerTable().getAmountPay() };
+			data[i] = new Object[] { cashing.getId(),  cashing.getDinnerTable().getNumber(), cashing.getCash(), cashing.getTicket(), cashing.getCheque(), cashing.getCard(), cashing.getOnline(), cashing.getUnpaid(), cashing.getDinnerTable().getAmountPay() };
 		}
 		TableModel model = new DefaultTableModel(data, columns);
 

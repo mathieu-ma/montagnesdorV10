@@ -15,7 +15,8 @@
                 <property name="cash" column="drv_cash" type="float"/>                
                 <property name="ticket" column="drv_ticket" type="float"/>                
 				<property name="cheque" column="drv_cheque" type="float"/>                
-                <property name="card" column="drv_card" type="float"/>                
+                <property name="card" column="drv_card" type="float"/>
+                <property name="online" column="drv_online" type="float"/>
                 <property name="unpaid" column="drv_unpaid" type="float"/>
                 <property name="amount" column="drv_amount" type="float"/>                
                 <property name="takeaway" column="drv_takeaway"  type="boolean"/>                

@@ -98,6 +98,10 @@ public final class DaylyReceiptsListUploadAction extends Action
 						cashing.setCard(card);
 					}
 					if(sb.hasMoreTokens()) {
+						Float online = new Float(sb.nextToken().replace(',', '.')).floatValue();
+						cashing.setOnline(online);
+					}
+					if(sb.hasMoreTokens()) {
 						Float unpaid = new Float(sb.nextToken().replace(',', '.')).floatValue();
 						cashing.setUnpaid(unpaid);
 					}
@@ -150,7 +154,10 @@ public final class DaylyReceiptsListUploadAction extends Action
 					Float card = new Float(sheet.getValueAt(5, i).toString()).floatValue();
 					cashing.setCard(card);
 	
-					Float unpaid = new Float(sheet.getValueAt(6, i).toString()).floatValue();
+					Float online = new Float(sheet.getValueAt(6, i).toString()).floatValue();
+					cashing.setOnline(online);
+	
+					Float unpaid = new Float(sheet.getValueAt(7, i).toString()).floatValue();
 					cashing.setUnpaid(unpaid);
 				} catch(Exception e) {
 					// Any exception occur then Continue the next line

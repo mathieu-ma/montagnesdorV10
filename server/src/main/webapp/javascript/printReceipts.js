@@ -52,7 +52,8 @@ function getCashing(typeTable, indexCashing)
 	var ticket = eval("document.printForm.cashingTicket"+typeTable+indexCashing).value;
 	var cheque = eval("document.printForm.cashingCheque"+typeTable+indexCashing).value;
 	var card = eval("document.printForm.cashingCard"+typeTable+indexCashing).value;
-	var result = spacePadding(tableNumber, 3, "right")+" !"+spacePadding(cash, 7, "left")+" !"+spacePadding(ticket, 6, "left")+" !"+spacePadding(cheque, 7, "left")+" !"+spacePadding(card, 7, "left");
+	var online = eval("document.printForm.cashingOnline"+typeTable+indexCashing).value;
+	var result = spacePadding(tableNumber, 3, "right")+" !"+spacePadding(cash, 7, "left")+" !"+spacePadding(ticket, 6, "left")+" !"+spacePadding(cheque, 7, "left")+" !"+spacePadding(card, 7, "left")+" !"+spacePadding(online, 7, "left");
 	return result;
 }
 
@@ -88,7 +89,7 @@ function printing(typeTable)
 
 	//Recettes
 	printerApplet.addData1(separator);
-	printerApplet.addData1(document.printForm.daylyReceiptsPrintLabelTable.value+"!    "+document.printForm.daylyReceiptsPrintLabelCash.value+"!  "+document.printForm.daylyReceiptsPrintLabelTicket.value+"!   "+document.printForm.daylyReceiptsPrintLabelCheque.value+"!   "+document.printForm.daylyReceiptsPrintLabelCard.value+"!");
+	printerApplet.addData1(document.printForm.daylyReceiptsPrintLabelTable.value+"!    "+document.printForm.daylyReceiptsPrintLabelCash.value+"!  "+document.printForm.daylyReceiptsPrintLabelTicket.value+"!   "+document.printForm.daylyReceiptsPrintLabelCheque.value+"!   "+document.printForm.daylyReceiptsPrintLabelCard.value+"!"+"!   "+document.printForm.daylyReceiptsPrintLabelOnline.value+"!");
 	printerApplet.addData1(separator);
 
 	var cashingNumber = eval("document.printForm.numberTables"+typeTable).value;
@@ -107,18 +108,20 @@ function printing(typeTable)
 	var sumTicket = eval("document.printForm.sumTickets"+typeTable).value;
 	var sumCheque = eval("document.printForm.sumCheques"+typeTable).value;
 	var sumCard = eval("document.printForm.sumCards"+typeTable).value;
+	var sumOnline = eval("document.printForm.sumOnlines"+typeTable).value;
 	var sumUnpaid = eval("document.printForm.sumUnpaid"+typeTable).value;
 	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumCash.value+" ............... : "+spacePadding(sumCash, 10, "left"));
-	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumTicket.value+" ......... : "+spacePadding(sumTicket, 10, "left"))
-	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumCheque.value+" ..... : "+spacePadding(sumCheque, 10, "left"))
-	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumCard.value+" ...... : "+spacePadding(sumCard, 10, "left"))
-	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumUnpaid.value+" ............... : "+spacePadding(sumUnpaid, 10, "left"))
+	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumTicket.value+" ......... : "+spacePadding(sumTicket, 10, "left"));
+	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumCheque.value+" ..... : "+spacePadding(sumCheque, 10, "left"));
+	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumCard.value+" ...... : "+spacePadding(sumCard, 10, "left"));
+	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumOnline.value+" ............... : "+spacePadding(sumOnline, 10, "left"));
+	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumUnpaid.value+" ............... : "+spacePadding(sumUnpaid, 10, "left"));
 	printerApplet.addData1(separator);
 	printerApplet.addData1(" ");
 
 	//Total recette
 	var sumCashingByTable = parseFloat(eval("document.printForm.sumAmounts"+typeTable).value);
-	var sumDifference = eval(parseFloat(sumCashingByTable)-(parseFloat(sumCash)+parseFloat(sumTicket)+parseFloat(sumCheque)+parseFloat(sumCard)+parseFloat(sumUnpaid)));
+	var sumDifference = eval(parseFloat(sumCashingByTable)-(parseFloat(sumCash)+parseFloat(sumTicket)+parseFloat(sumCheque)+parseFloat(sumCard)+parseFloat(sumOnline)+parseFloat(sumUnpaid)));
 	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelSumCashingByTable.value+" ........ : "+spacePadding(eval("document.printForm.sumAmounts"+typeTable).value, 10, "left"));
 	var vatsNumber = Number(document.printForm.daylyReceiptsPrintNumberVats.value);
 	for(var i=0; i<vatsNumber; i++)
@@ -127,7 +130,7 @@ function printing(typeTable)
 		printerApplet.addData1("*** "+eval("document.printForm.daylyReceiptsPrintLabelSumCashingByVat"+typeTable+i).value+spacePadding(eval("document.printForm.daylyReceiptsPrintVatAmount"+typeTable+i).value, MAX_PRINTING_COLUMN1-length, "left"));
 		sumWithoutVat += parseFloat(eval("document.printForm.daylyReceiptsPrintVatAmount"+typeTable+i).value);
 	}
-	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelDifference.value+" ... : "+spacePadding(formatNumber(sumDifference,2), 10, "left"));
+	printerApplet.addData1("*** "+document.printForm.daylyReceiptsPrintLabelDifference.value+" .. : "+spacePadding(formatNumber(sumDifference,2), 10, "left"));
 	printerApplet.addData1(separator);
 	printerApplet.addData1(separator);
 
