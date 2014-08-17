@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.UserAddress" table="t_user_address">
+                <id name="id" column="uad_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<property name="address1" column="uad_address1"/>
+				<property name="address2" column="uad_address2"/>
+				<property name="address3" column="uad_address3"/>
+				<property name="postcode" column="uad_postcode"/>
+				<property name="city" column="uad_city"/>
+				<property name="state" column="uad_state"/>
+				<property name="country" column="uad_country"/>
+				<property name="digitalCode" column="uad_digital_code"/>
+				<property name="staircase" column="uad_staircase"/>
+				<property name="stage" column="uad_stage"/>
+				<property name="building" column="uad_building"/>
+				
+				<many-to-one name="user" column="usr_id"/>
+        </class>
+
+</hibernate-mapping>

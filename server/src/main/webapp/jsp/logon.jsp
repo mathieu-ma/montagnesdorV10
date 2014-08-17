@@ -19,7 +19,7 @@
 		<link rel="SHORTCUT ICON" type="image/x-icon" HREF="<c:out value="${pageContext.request.contextPath}"/>/favicon.ico">				
 		<link rel="stylesheet" type="text/css" href="<c:out value="${pageContext.request.contextPath}"/>/css/montagnesdor.css" />
 		<title><fmt:message key="montagnesdor.welcome"/> - <fmt:message key="login.jsp.title"/></title>
-		<script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/common.js"></script>
+		<script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/commons.js"></script>
 		<script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/logon.js"></script>
 	</head>
 	<body onload="initPage()" style="overflow:hidden">

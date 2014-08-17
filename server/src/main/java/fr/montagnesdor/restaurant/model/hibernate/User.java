@@ -3,6 +3,7 @@
  */
 package fr.montagnesdor.restaurant.model.hibernate;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class User
   usr_picture bytea,
 */
   private Long id;
-  private UserAuthentication userAuthentication;
-  private UserRole userRole;
+  private UserAuthentication userAuthentication = new UserAuthentication();
+  private UserRole userRole = new UserRole();
   private String name;
   private String forename1;
   private String forename2;
@@ -38,8 +39,12 @@ public class User
   //Ce champ n'est pas définie dans le fichier User.hbm.xml
   private List localesLanguages;
   
+  private List<UserPhone> phones = new ArrayList<UserPhone>();
+  
+  private List<UserEmail> emails = new ArrayList<UserEmail>();
 
-	
+  private List<UserAddress> addresses = new ArrayList<UserAddress>();
+
 	/**
 	 * @return
 	 */
@@ -201,12 +206,54 @@ public class User
 		localesLanguages = list;
 	}
 
-public Locale getPreferedPrintLanguage()
-{
-    return preferedPrintLanguage;
-}
-public void setPreferedPrintLanguage(Locale preferedPrintLanguage)
-{
-    this.preferedPrintLanguage = preferedPrintLanguage;
-}
+	public Locale getPreferedPrintLanguage()
+	{
+	    return preferedPrintLanguage;
+	}
+	public void setPreferedPrintLanguage(Locale preferedPrintLanguage)
+	{
+	    this.preferedPrintLanguage = preferedPrintLanguage;
+	}
+	
+	/**
+	 * @return the phones
+	 */
+	public List<UserPhone> getPhones() {
+		return phones;
+	}
+	
+	/**
+	 * @param phones the phones to set
+	 */
+	public void setPhones(List<UserPhone> phones) {
+		this.phones = phones;
+	}
+	
+	/**
+	 * @return the emails
+	 */
+	public List<UserEmail> getEmails() {
+		return emails;
+	}
+	
+	/**
+	 * @param emails the emails to set
+	 */
+	public void setEmails(List<UserEmail> emails) {
+		this.emails = emails;
+	}
+	
+	/**
+	 * @return the addresses
+	 */
+	public List<UserAddress> getAddresses() {
+		return addresses;
+	}
+	
+	/**
+	 * @param addresses the addresses to set
+	 */
+	public void setAddresses(List<UserAddress> addresses) {
+		this.addresses = addresses;
+	}
 }

@@ -6,20 +6,19 @@
  */
 package fr.montagnesdor.restaurant.model.hibernate;
 
+
 /**
  * @author Mathieu MA sous conrad
  *
- *	Cette classe est un mapping de la table t_user_role.
+ *	Cette classe est un mapping de la table t_user_email.
  */
-public class UserRole
+public class UserEmail
 {
-	/*
-	  rol_id serial,
-	  rol_label_code varchar(20) NOT NULL,  
-	 */
-
 	private Long id;
-	private String labelCode;
+	private String mail;
+	
+	private User user;
+
 	/**
 	 * @return the id
 	 */
@@ -33,23 +32,33 @@ public class UserRole
 		this.id = id;
 	}
 	/**
-	 * @return the labelCode
+	 * @return the mail
 	 */
-	public String getLabelCode() {
-		return labelCode;
+	public String getMail() {
+		return mail;
 	}
 	/**
-	 * @param labelCode the labelCode to set
+	 * @param mail the mail to set
 	 */
-	public void setLabelCode(String labelCode) {
-		this.labelCode = labelCode;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "UserRole [id=" + id + ", labelCode=" + labelCode + "]";
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "UserEmail [id=" + id + ", mail=" + mail + "]";
+	}
 }

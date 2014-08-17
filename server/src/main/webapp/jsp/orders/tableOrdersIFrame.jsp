@@ -134,7 +134,9 @@
 		<input type="hidden" name='tableId' value="<c:out value="${userSession.room.currentTable.id}"/>">
 		<input type="hidden" name='actionPasswordChangeOrders' value="allowModifyOrders">
 		<input type="hidden" name='optionSelected' value="MERGE">
-		<input type="hidden" name='isBillPrinting' value="false">
+		<input type="hidden" name='isTakeaway' value="${userSession.room.currentTable.takeaway}">
+		<input type="hidden" name='customersNumber' value="${userSession.room.currentTable.customersNumber}">
+		<input type="hidden" name='printingType' value="NONE">
 	</form>
 	<form name="alertMessagesForm" onsubmit="return false">
 		<input type="hidden" name="tableOrdersIFrameJspCodeInvalide" value="<fmt:message key="tableOrdersIFrame.jsp.code.invalide"/>">
@@ -208,6 +210,11 @@
 							      <a href="javascript:window.IFrameData.billPrint();" title="<fmt:message key="tableOrdersIFrame.jsp.title.bill.printing"><fmt:param><c:out value="${userSession.room.currentTable.number}"/></fmt:param></fmt:message>"><fmt:message key="tableOrdersIFrame.jsp.label.bill.printing"/></a>
 							    </td>
 							</tr>
+							<!-- tr>
+						    	<td class="border"> 
+							      <a href="javascript:window.IFrameData.deliveryPrint();" title="<fmt:message key="tableOrdersIFrame.jsp.title.delivery.printing"><fmt:param><c:out value="${userSession.room.currentTable.number}"/></fmt:param></fmt:message>"><fmt:message key="tableOrdersIFrame.jsp.label.delivery.printing"/></a>
+							    </td>
+							</tr-->
 						</table>
 					</td>
 				</tr>					

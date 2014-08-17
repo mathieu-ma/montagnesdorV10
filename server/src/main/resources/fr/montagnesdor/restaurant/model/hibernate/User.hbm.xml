@@ -19,6 +19,19 @@
 				<many-to-one name="preferedPrintLanguage" column="loc_id"/>
 				<property name="picture" column="usr_picture" type="binary"/>
 				<!--property name="photo" type="fr.montagnesdor.util.test.InputStreamBinaryType"/-->
+				
+				<bag name="phones" table="t_user_phone" inverse="true" cascade="delete-orphan">
+            		<key column="usr_id"/>
+                	<one-to-many class="fr.montagnesdor.restaurant.model.hibernate.UserPhone"/>
+        		</bag>
+				<bag name="emails" table="t_user_email" inverse="true" cascade="delete-orphan">
+            		<key column="usr_id"/>
+                	<one-to-many class="fr.montagnesdor.restaurant.model.hibernate.UserEmail"/>
+        		</bag>
+				<bag name="addresses" table="t_user_address" inverse="true" cascade="delete-orphan">
+            		<key column="usr_id"/>
+                	<one-to-many class="fr.montagnesdor.restaurant.model.hibernate.UserAddress"/>
+        		</bag>
         </class>
         
 

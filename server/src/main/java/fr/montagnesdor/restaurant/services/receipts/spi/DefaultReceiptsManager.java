@@ -398,8 +398,8 @@ public class DefaultReceiptsManager implements ReceiptsManager
 		}
 		finally
 		{
-			try{preparedStatement.close();}catch (Exception e){}
-			try{connection.close();}catch (Exception e){}
+//			try{preparedStatement.close();}catch (Exception e){}
+//			try{connection.close();}catch (Exception e){}
 			try{HibernateUtil.closeSession();}catch (Exception e){}
 		}
 	}
@@ -624,9 +624,9 @@ public class DefaultReceiptsManager implements ReceiptsManager
 		}
 		finally
 		{
-			try{resultSet.close();}catch (Exception e){}		    
-			try{preparedStatement.close();}catch (Exception e){}
-			try{connection.close();}catch (Exception e){}
+//			try{resultSet.close();}catch (Exception e){}		    
+//			try{preparedStatement.close();}catch (Exception e){}
+//			try{connection.close();}catch (Exception e){}
 			try{HibernateUtil.closeSession();}catch (Exception he){}
 		}
 
@@ -670,9 +670,9 @@ public class DefaultReceiptsManager implements ReceiptsManager
 		}
 		finally
 		{
-			try{resultSet.close();}catch (Exception he){}
-			try{preparedStatement.close();}catch (Exception he){}
-			try{connection.close();}catch (Exception he){}
+//			try{resultSet.close();}catch (Exception he){}
+//			try{preparedStatement.close();}catch (Exception he){}
+//			try{connection.close();}catch (Exception he){}
 			try{HibernateUtil.closeSession();}catch (Exception he){}
 		}
 

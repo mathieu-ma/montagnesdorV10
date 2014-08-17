@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.UserEmail" table="t_user_email">
+                <id name="id" column="uem_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<property name="mail" column="uem_mail"/>
+				
+				<many-to-one name="user" column="usr_id"/>
+        </class>
+
+</hibernate-mapping>

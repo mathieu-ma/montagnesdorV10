@@ -53,6 +53,7 @@ grant Principal fr.montagnesdor.restaurant.jaas.authorization.TypedPrincipal "AD
 	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ChangeTable.do";
 	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DeleteTable.do";
 	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CustomerBillInfo.do";
+	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CustomerDeliveryInfo.do";
 	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/PrintTable.do";
 	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CreateBillsTable.do";
 	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/CreateCreditsTable.do";
@@ -100,6 +101,10 @@ grant Principal fr.montagnesdor.restaurant.jaas.authorization.TypedPrincipal "AD
   	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/DaylyReceiptsListUpload.do";
   	
   	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/ImportTakeAwayOrders.do";
+  	
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/UsersListIFrame.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/SaveOrUpdateUser.do";
+  	permission fr.montagnesdor.restaurant.jaas.authorization.URLPermission "/SearchUsers.do";
 };
 
 

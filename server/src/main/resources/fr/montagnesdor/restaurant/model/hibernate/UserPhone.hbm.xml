@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+        <class name="fr.montagnesdor.restaurant.model.hibernate.UserPhone" table="t_user_phone">
+                <id name="id" column="uph_id" type="long">
+                        <generator class="increment"/>
+                </id>
+				<property name="number" column="uph_number"/>
+				
+				<many-to-one name="user" column="usr_id"/>
+        </class>
+
+</hibernate-mapping>

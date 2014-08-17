@@ -74,7 +74,7 @@
 			<input type="hidden" name="pageRequested" value="successTableOrdersIFrame">
 			<input type="hidden" name="tableId" value="<c:out value="${userSession.room.currentTable.id}"/>">
 			<input type="hidden" name='actionPasswordChangeOrders' value="allowModifyOrders">
-			<input type="hidden" name='isBillPrinting' value="false">			
+			<input type="hidden" name='printingType' value="NONE">		
 		</form>
 		<div style='position: relative; height: 0;visibility:hidden'>
 			<c:if test="${not empty userSession.room.currentTable.orders}">	

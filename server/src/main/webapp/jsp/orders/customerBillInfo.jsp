@@ -10,7 +10,7 @@
 	<head> 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 		<link rel='stylesheet' type='text/css' href='<c:out value="${pageContext.request.contextPath}"/>/css/montagnesdor.css'/>
-		<title><fmt:message key="montagnesdor.welcome"/> - <fmt:message key="changeTable.jsp.title"/></title>
+		<title><fmt:message key="montagnesdor.welcome"/> - <fmt:message key="customerBillInfo.jsp.title"/></title>
 		<script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/commons.js"></script>
 		<script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/tableOrders.js"></script>
 		<script type="text/javascript" src="<c:out value="${pageContext.request.contextPath}"/>/javascript/customerBillInfo.js"></script>
@@ -29,10 +29,10 @@
 				<table class="border" width="100%" align="center">
 					<tr>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
-						<td class="border" width="50%"><fmt:message key="customerBillInfo.jsp.label.customer.bill.name"/></td>
+						<td class="border" width="50%"><fmt:message key="customerBillInfo.jsp.label.customer.bill.full.name"/></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 						<td class="border" width="50%">
-							<input type='text' name='customerBillName' onkeyup='itManager.processUserEntry(event, this)' maxlength='40' class='string'>
+							<input type='text' name='customerBillName' onkeyup='itManager.processUserEntry(event, this)' maxlength='34' class='string'>
 						</td>			
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 					</tr>	
@@ -41,24 +41,24 @@
 						<td class="border" width="50%"><fmt:message key="customerBillInfo.jsp.label.customer.bill.address"/></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 						<td class="border" width="50%">
-							<input type='text' name='customerBillAddress' onkeyup='itManager.processUserEntry(event, this)' maxlength='40' class='string'>
+							<input type='text' name='customerBillAddress' onkeyup='itManager.processUserEntry(event, this)' maxlength='30' class='string'>
 						</td>			
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 					</tr>	
 					<tr>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
-						<td class="border" width="50%"><fmt:message key="customerBillInfo.jsp.label.customer.bill.zip.city"/></td>
+						<td class="border" width="50%"><fmt:message key="customerBillInfo.jsp.label.customer.bill.city"/></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 						<td class="border" width="50%">
-							<input type='text' name='customerBillCity' onkeyup='itManager.processUserEntry(event, this)' maxlength='40' class='string'>
+							<input type='text' name='customerBillCity' onkeyup='itManager.processUserEntry(event, this)' maxlength='26' class='string'>
 						</td>			
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 					</tr>	
 					<tr>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
-					   	<td class="border" width="50%"><a accesskey='<fmt:message key="changeTable.jsp.accesskey.cancel"/>' href="javascript:cancel()" class="cancel"><fmt:message key="label.cancel"/></a></td>
+					   	<td class="border" width="50%"><a accesskey='<fmt:message key="changeTable.jsp.accesskey.cancel"/>' href="javascript:itManager.cancel()" class="cancel"><fmt:message key="label.cancel"/></a></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
-						<td class="border" width="50%"><a accesskey='<fmt:message key="changeTable.jsp.accesskey.confirm"/>' href="javascript:printTable()" class="confirm" ><fmt:message key="label.confirm"/></a></td>
+						<td class="border" width="50%"><a accesskey='<fmt:message key="changeTable.jsp.accesskey.confirm"/>' href="javascript:itManager.submit()" class="confirm" ><fmt:message key="label.confirm"/></a></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 					</tr>
 					<logic:messagesPresent>
@@ -76,7 +76,7 @@
 					</logic:messagesPresent>
 				</table>
 				
-				<html:hidden property='isBillPrinting' value="true"/>
+				<html:hidden property='printingType' value="BILL"/>
 			</html:form>
 		</c:if>
 		<c:if test="${empty userSession.room.currentTable.orders}">
@@ -96,7 +96,7 @@
 		<form name="modifyTableForm" action="<c:out value="${pageContext.request.contextPath}"/>/DisplayJsp.do" method="post" onsubmit="return false" target="IFrameData">
 			<input type="hidden" name="pageRequested" value="successChangeTable">
 			<input type="hidden" name='actionPasswordChangeOrders' value="allowModifyOrders">
-			<input type="hidden" name='isBillPrinting' value="false">			
+			<input type="hidden" name='printingType' value="BILL">			
 		</form>
 		<div style='position: relative; height: 0; visibility:hidden'>
 			<c:if test="${not empty userSession.room.currentTable.orders}">	

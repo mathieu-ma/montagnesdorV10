@@ -37,7 +37,7 @@
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 					   	<td class="border" width="50%"><a accesskey='<fmt:message key="printTable.jsp.accesskey.cancel"/>' href="javascript:cancel()" class="cancel"><fmt:message key="label.cancel"/></a></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
-						<td class="border" width="50%"><a id="idFocusAnchor" accesskey='<fmt:message key="printTable.jsp.accesskey.confirm"/>' href="javascript:processPrinting('<c:out value="${param.isBillPrinting}"/>')" class="confirm" ><fmt:message key="label.confirm"/></a></td>
+						<td class="border" width="50%"><a id="idFocusAnchor" accesskey='<fmt:message key="printTable.jsp.accesskey.confirm"/>' href="javascript:processPrinting('<c:out value="${param.printingType}"/>')" class="confirm" ><fmt:message key="label.confirm"/></a></td>
 						<td class="border"><b><font color="#FFCC00">|</font></b></td>
 					</tr>
 				</table>
@@ -62,7 +62,7 @@
 			<input type="hidden" name="date">
 			<input type="hidden" name="patternDate" value="dd/MM/yyyy-HH:mm:ss">
 			<input type="hidden" name='actionPasswordChangeOrders' value="allowModifyOrders">
-			<input type="hidden" name='isBillPrinting' value="false">				
+			<input type="hidden" name='printingType' value="NONE">				
 		</form>
 		<div style='position: relative; height: 0;visibility:hidden'>
 			<c:if test="${not empty userSession.room.currentTable.orders}">	
@@ -86,15 +86,35 @@
     		<label id='restaurantOthersInfo1'><fmt:message key="restaurant.others.info1"/></label>
     		<label id='restaurantOthersInfo2'><fmt:message key="restaurant.others.info2"/></label>
 
-<!-- Infos sur la facture du client -->
+			<!-- Details on customer billing order -->
 			<c:if test="${not empty param.customerBillName}">
-<label id='customerBillName'>Nom : <c:out value="${param.customerBillName}"/></label>
+				<label id='customerBillName'><fmt:message key="customerBillInfo.jsp.label.customer.bill.full.name"/> <c:out value="${param.customerBillName}"/></label>
 			</c:if>
 			<c:if test="${not empty param.customerBillAddress}">
-<label id='customerBillAddress'>Adresse : <c:out value="${param.customerBillAddress}"/></label>
+				<label id='customerBillAddress'><fmt:message key="customerBillInfo.jsp.label.customer.bill.address"/> <c:out value="${param.customerBillAddress}"/></label>
 			</c:if>
 			<c:if test="${not empty param.customerBillCity}">
-<label id='customerBillCity'>Ville : <c:out value="${param.customerBillCity}"/></label>
+				<label id='customerBillCity'><fmt:message key="customerBillInfo.jsp.label.customer.bill.city"/> <c:out value="${param.customerBillCity}"/></label>
+			</c:if>
+
+			<!-- Details on customer delivery order -->
+			<c:if test="${not empty param.customerDeliveryName}">
+				<label id='customerDeliveryFullName'><fmt:message key="customerDeliveryInfo.jsp.label.customer.delivery.full.name"/> <c:out value="${param.customerDeliveryName}"/></label>
+			</c:if>
+			<c:if test="${not empty param.customerDeliveryAddress1}">
+				<label id='customerDeliveryAddress1'><fmt:message key="customerDeliveryInfo.jsp.label.customer.delivery.address1"/> <c:out value="${param.customerDeliveryAddress1}"/></label>
+			</c:if>
+			<c:if test="${not empty param.customerDeliveryAddress2}">
+				<label id='customerDeliveryAddress2'><fmt:message key="customerDeliveryInfo.jsp.label.customer.delivery.address2"/> <c:out value="${param.customerDeliveryAddress2}"/></label>
+			</c:if>
+			<c:if test="${not empty param.customerDeliveryAddress3}">
+				<label id='customerDeliveryAddress3'><fmt:message key="customerDeliveryInfo.jsp.label.customer.delivery.address3"/> <c:out value="${param.customerDeliveryAddress3}"/></label>
+			</c:if>
+			<c:if test="${not empty param.customerDeliveryPhone}">
+				<label id='customerDeliveryPhone'><fmt:message key="customerDeliveryInfo.jsp.label.customer.delivery.phone"/> <c:out value="${param.customerDeliveryPhone}"/></label>
+			</c:if>
+			<c:if test="${not empty param.customerDeliveryEmail}">
+				<label id='customerDeliveryEmail'><fmt:message key="customerDeliveryInfo.jsp.label.customer.delivery.email"/> <c:out value="${param.customerDeliveryEmail}"/></label>
 			</c:if>
 			
     		<label id='registrationDate'><fmt:formatDate value="${userSession.room.currentTable.registrationDate}" pattern="dd/MM/yyyy" type="DATE"/></label>
@@ -138,7 +158,7 @@
 		    <label id='billCustomerNumber'><fmt:message key="printTable.jsp.bill.customer.number"><fmt:param><c:out value="${userSession.room.currentTable.customersNumber}"/></fmt:param></fmt:message></label>
 			</c:if>
 		    <c:if test="${userSession.room.currentTable.customersNumber==0}">
-		    <label id='billCustomerNumber'><fmt:message key="printTable.jsp.bill.customer.number0"/></label>
+		    <label id='billCustomerNumber'></label>
 			</c:if>
 
 		<c:set var="vatsNumber" value="0"/>
@@ -152,7 +172,7 @@
 		<jsp:include page='/jsp/commons/includeDivIFrame.jsp'/>
 		<c:if test="${(not empty userSession.room.currentTable.orders) and (empty userSession.room.currentTable.printDate)}">
 		<script language="javascript">
-			processPrinting('<c:out value="${param.isBillPrinting}"/>');
+			processPrinting('<c:out value="${param.printingType}"/>');
 		</script>
 		</c:if>
 		<!--

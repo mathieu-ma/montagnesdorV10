@@ -71,17 +71,19 @@
 				</tr>
 				<tr>
 				    <td class="border"><b><font color="#FFCC00">|</font></b></td>
-					<td class="border" id='IDTD0' width="20%" align="center"><a accesskey='<fmt:message key="accesskey.module1"/>' id='IDA0' href='javascript:changeModule(0)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.user"/></a></td>
+					<td class="border" id='IDTD0' width="16%" align="center"><a accesskey='<fmt:message key="accesskey.module1"/>' id='IDA0' href='javascript:changeModule(0)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.user"/></a></td>
 				    <td class="border"><b><font color="#FFCC00">|</font></b></td>
-					<td class="border" id='IDTD1' width="20%" align="center"><a accesskey='<fmt:message key="accesskey.module2"/>' id='IDA1' href='javascript:changeModule(1)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.orders"/></a></td>
+					<td class="border" id='IDTD1' width="16%" align="center"><a accesskey='<fmt:message key="accesskey.module2"/>' id='IDA1' href='javascript:changeModule(1)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.orders"/></a></td>
 				    <td class="border"><b><font color="#FFCC00">|</font></b></td>
 					<!--td class="border" id='IDTD2' width="16%" align="center"><a accesskey='<fmt:message key="accesskey.module3"/>' id='IDA2' href='javascript:changeModule(2)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.tables"/></a></td>
 				    <td class="border"><b><font color="#FFCC00">|</font></b></td-->
-					<td class="border" id='IDTD3' width="20%" align="center"><a accesskey='<fmt:message key="accesskey.module4"/>' id='IDA3' href='javascript:changeModule(3)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.day"/></a></td>
+					<td class="border" id='IDTD3' width="16%" align="center"><a accesskey='<fmt:message key="accesskey.module4"/>' id='IDA3' href='javascript:changeModule(3)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.day"/></a></td>
 				    <td class="border"><b><font color="#FFCC00">|</font></b></td>
-					<td class="border" id='IDTD4' width="20%" align="center"><a accesskey='<fmt:message key="accesskey.module5"/>' id='IDA4' href='javascript:changeModule(4)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.month"/></a></td>
+					<td class="border" id='IDTD4' width="16%" align="center"><a accesskey='<fmt:message key="accesskey.module5"/>' id='IDA4' href='javascript:changeModule(4)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.month"/></a></td>
 				    <td class="border"><b><font color="#FFCC00">|</font></b></td>
-					<td class="border" id='IDTD5' width="20%" align="center"><a accesskey='<fmt:message key="accesskey.module6"/>' id='IDA5' href='javascript:changeModule(5)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.menus"/></a></td>
+					<td class="border" id='IDTD5' width="16%" align="center"><a accesskey='<fmt:message key="accesskey.module6"/>' id='IDA5' href='javascript:changeModule(5)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.menus"/></a></td>
+			      	<td class="border"><b><font color="#FFCC00">|</font></b></td>
+					<td class="border" id='IDTD6' width="16%" align="center"><a accesskey='<fmt:message key="accesskey.module7"/>' id='IDA6' href='javascript:changeModule(6)' class="lienHTML"><fmt:message key="menuTop.jsp.manage.users"/></a></td>
 			      	<td class="border"><b><font color="#FFCC00">|</font></b></td>
 			    </tr>
 		  	</table>

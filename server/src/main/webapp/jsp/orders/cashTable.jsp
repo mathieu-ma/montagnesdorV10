@@ -329,7 +329,7 @@
 			<input type="hidden" name='sortListBy' value='<c:out value="${param.sortListBy}"/>'>
 			<input type="hidden" name='sortMonotony' value='<c:out value="${param.sortMonotony}"/>'>
 			<input type="hidden" name='actionPasswordChangeOrders' value="allowModifyOrders">
-			<input type="hidden" name='isBillPrinting' value="false">			
+			<input type="hidden" name='printingType' value="NONE">
 		</form>
 		<form name="alertMessagesForm" onsubmit="return false">
 			<input type="hidden" name="cashTableJspAlertAmountPaid" value="<fmt:message key="cashTable.jsp.alert.amount.paid"/>">

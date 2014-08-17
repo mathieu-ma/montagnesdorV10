@@ -299,7 +299,7 @@ public class DefaultOrdersManager implements OrdersManager
 			result = tableToMerge;
 			
 			tx.commit();
-			preparedStatement.close();			
+//			preparedStatement.close();			
 			HibernateUtil.closeSession();
 
 		}
@@ -315,7 +315,7 @@ public class DefaultOrdersManager implements OrdersManager
 		{
 			try
 			{
-				preparedStatement.close();
+//				preparedStatement.close();
 				HibernateUtil.closeSession();
 			}
 			catch (Exception e)

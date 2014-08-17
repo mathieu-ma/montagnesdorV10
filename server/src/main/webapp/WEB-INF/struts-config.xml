@@ -16,6 +16,9 @@
 	    <form-bean name="PurgeStatsConsumptionProductsForm" type="fr.montagnesdor.restaurant.struts.forms.PurgeStatsConsumptionProductsForm"/>
 	    <form-bean name="SearchStatsConsumptionProductsForm" type="fr.montagnesdor.restaurant.struts.forms.SearchStatsConsumptionProductsForm"/>
 	    <form-bean name="CustomerBillInfoForm" type="fr.montagnesdor.restaurant.struts.forms.CustomerBillInfoForm"/>
+	    <form-bean name="CustomerDeliveryInfoForm" type="fr.montagnesdor.restaurant.struts.forms.CustomerDeliveryInfoForm"/>
+	    <form-bean name="SaveOrUpdateUserForm" type="fr.montagnesdor.restaurant.struts.forms.SaveOrUpdateUserForm"/>
+	    <form-bean name="SearchUsersForm" type="fr.montagnesdor.restaurant.struts.forms.SearchUsersForm"/>
 	</form-beans>
 
 	<!-- ========== Global Forward Definitions ============================== -->
@@ -63,6 +66,7 @@
 			<forward name="successMergeTable" path="/jsp/orders/mergeTable.jsp"/>
 			<forward name="successChangeTable" path="/jsp/orders/changeTable.jsp"/>
 			<forward name="successCustomerBillInfo" path="/jsp/orders/customerBillInfo.jsp"/>
+			<forward name="successCustomerDeliveryInfo" path="/jsp/orders/customerDeliveryInfo.jsp"/>
 			<forward name="successPrintTable" path="/jsp/orders/printTable.jsp"/>
 			<forward name="successCashTable" path="/jsp/orders/cashTable.jsp"/>
 			<forward name="successDeleteTable" path="/jsp/orders/deleteTable.jsp"/>
@@ -108,6 +112,9 @@
 	    	<forward name="success" path="/jsp/commons/updateMenuTop.jsp"/>    
 	    </action>
 	    <action path="/CustomerBillInfo" type="fr.montagnesdor.restaurant.struts.actions.CustomerBillInfoAction" name="CustomerBillInfoForm" scope="request" input="/jsp/orders/customerBillInfo.jsp">
+	    	<forward name="success" path="/jsp/orders/printTable.jsp"/>	
+	    </action>
+	    <action path="/CustomerDeliveryInfo" type="fr.montagnesdor.restaurant.struts.actions.CustomerDeliveryInfoAction" name="CustomerDeliveryInfoForm" scope="request" input="/jsp/orders/customerDeliveryInfo.jsp">
 	    	<forward name="success" path="/jsp/orders/printTable.jsp"/>	
 	    </action>
 	    <action path="/PrintTable" type="fr.montagnesdor.restaurant.struts.actions.PrintTableAction" scope="request">
@@ -198,6 +205,19 @@
 	    <!-- Import Take-Away orders -->
 	    <action path="/ImportTakeAwayOrders" parameter="action" type="fr.montagnesdor.restaurant.struts.actions.ImportTakeAwayOrdersAction" scope="request">
     		<forward name="success" path="/TablesListExcludeCashedTableIFrame.do"/>
+	    </action>
+
+	    <!-- Process Users -->
+	    <action path="/UsersListIFrame" type="fr.montagnesdor.restaurant.struts.actions.UsersListIFrameAction" scope="request">
+    		<forward name="success" path="/jsp/users/usersListIFrame.jsp"/>
+	    </action>
+	    <action path="/SaveOrUpdateUser" type="fr.montagnesdor.restaurant.struts.actions.SaveOrUpdateUserAction" name="SaveOrUpdateUserForm" scope="request" input="/jsp/users/saveOrUpdateUser.jsp">
+    		<forward name="success" path="/UsersListIFrame.do"/>
+	    	<forward name="successPrint" path="/jsp/users/printUser.jsp"/>
+    		<forward name="error" path="/jsp/users/error.jsp"/>
+	    </action>
+	    <action path="/SearchUsers" type="fr.montagnesdor.restaurant.struts.actions.SearchUsersAction" name="SearchUsersForm" scope="request" input="/UsersListIFrame.do">
+    		<forward name="success" path="/jsp/users/usersListIFrame.jsp"/>
 	    </action>
 	    	    
  	</action-mappings>

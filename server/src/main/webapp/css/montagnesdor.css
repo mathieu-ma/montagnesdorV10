@@ -384,14 +384,12 @@ img.flagUnselected	{
 applet 	{ 
 				height: 1;
 				width: 1;
-				background-color: #660000
+				background-color: #660000;
 			}
 
 body		{
-				cursor: url('../images/panda.cur'), url('images/panda.cur'), auto;
-				background-image: url("./images/montagnesdor2.gif"); 
 				background-color: #660000; 
-				color: #FFCC00
+				color: #FFCC00;
 		 	}
 
 html.border		{

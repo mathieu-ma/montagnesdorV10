@@ -69,7 +69,9 @@
         <mapping resource="fr/montagnesdor/restaurant/model/hibernate/StatsConsumptionProduct.hbm.xml"/>        
         <mapping resource="fr/montagnesdor/restaurant/model/hibernate/VatRevenue.hbm.xml"/>
         
-        
+        <mapping resource="fr/montagnesdor/restaurant/model/hibernate/UserPhone.hbm.xml"/>
+        <mapping resource="fr/montagnesdor/restaurant/model/hibernate/UserEmail.hbm.xml"/>
+        <mapping resource="fr/montagnesdor/restaurant/model/hibernate/UserAddress.hbm.xml"/>
         <mapping resource="fr/montagnesdor/restaurant/model/hibernate/UserRole.hbm.xml"/>        
         <mapping resource="fr/montagnesdor/restaurant/model/hibernate/UserRoleLanguage.hbm.xml"/>        
         <mapping resource="fr/montagnesdor/restaurant/model/hibernate/UserAuthentication.hbm.xml"/>

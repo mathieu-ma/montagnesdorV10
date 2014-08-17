@@ -559,9 +559,9 @@ public class DefaultMenusManager implements MenusManager
 		}
 		finally
 		{
-			try{resultSet.close();}catch (Exception e){}
-			try{prepareStatement.close();}catch (Exception e){}
-			try{connection.close();}catch (Exception e){}
+//			try{resultSet.close();}catch (Exception e){}
+//			try{prepareStatement.close();}catch (Exception e){}
+//			try{connection.close();}catch (Exception e){}
 			try{HibernateUtil.closeSession();}catch (HibernateException he){}
 		}
 	    return result;

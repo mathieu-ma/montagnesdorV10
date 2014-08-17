@@ -2,17 +2,21 @@ package fr.montagnesdor.restaurant.struts.forms;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 public final class CustomerBillInfoForm extends ActionForm
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String customerBillName = null;
 	private String customerBillAddress = null;
 	private String customerBillCity = null;
-	private String isBillPrinting = "";
+	private String printingType = "BILL";
 
 	/**
      * Reset all properties to their default values.
@@ -25,7 +29,7 @@ public final class CustomerBillInfoForm extends ActionForm
         this.customerBillName = null;
         this.customerBillAddress = null;
         this.customerBillCity = null;
-        this.isBillPrinting = "";
+        this.printingType = "BILL";
     }
     
     
@@ -90,13 +94,7 @@ public final class CustomerBillInfoForm extends ActionForm
 	}
 
 
-	public String getIsBillPrinting() {
-		return isBillPrinting;
+	public String getPrintingType() {
+		return printingType;
 	}
-
-
-	public void setIsBillPrinting(String isBillPrinting) {
-		this.isBillPrinting = isBillPrinting;
-	}
-
 }

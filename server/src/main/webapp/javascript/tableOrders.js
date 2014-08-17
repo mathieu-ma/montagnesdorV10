@@ -1274,9 +1274,15 @@ function printTable(cell)
 
 function billPrint()
 {
-	document.modifyTableForm.isBillPrinting.value = "true";
-//	document.modifyTableForm.pageRequested.value = "successPrintTable";
+	document.modifyTableForm.printingType.value = "BILL";
 	document.modifyTableForm.pageRequested.value = "successCustomerBillInfo";
+	document.modifyTableForm.submit();
+}
+
+function deliveryPrint()
+{
+	document.modifyTableForm.printingType.value = "DELIVERY";
+	document.modifyTableForm.pageRequested.value = "successCustomerDeliveryInfo";
 	document.modifyTableForm.submit();
 }
 
@@ -1516,11 +1522,11 @@ function initPageIFrame()
 	positionner();
 
 	//Dans le cas d'un changement de nombre de personnes quand l'impression de la table a déjà été faite
-	if(document.modifyTableForm.isTakeaway.value=="false")
+	if(document.modifyTableForm.isTakeaway && document.modifyTableForm.isTakeaway.value=="false")
 		window.parent.document.getElementById("idTDCustomerNumber").innerHTML = document.modifyTableForm.customersNumber.value;
 	
 	//Ceci est fait pour donner le focus à la fenêtre centrale dans le cas du browser ie
-	if(document.all)
+	if(document.getElementById)
 		window.focus();
 		
 	document.forms[0].quantity.focus();

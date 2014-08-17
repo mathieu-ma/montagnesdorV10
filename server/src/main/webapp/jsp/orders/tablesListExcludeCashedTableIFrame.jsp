@@ -107,13 +107,13 @@
 			<table width="90%" height="100%" cellspacing="0" cellpadding="0" border="0" >
 				<tr>
 					<td id="idTdDataOptions" width="15%" valign="top" title='Data Options'>
-						<table class="border" width="95%">
+						<!-- table class="border" width="95%">
 							<tr>
 						    	<td class="border"> 
 							      <a href="javascript:window.IFrameData.importTakeawayTables();" title="<fmt:message key="tablesList.title.import.takeaway.table" />"><fmt:message key="tablesList.title.import.takeaway.table" /></a>
 							    </td>
 							</tr>
-						</table>
+						</table-->
 					</td>
 				</tr>					
 				<tr>

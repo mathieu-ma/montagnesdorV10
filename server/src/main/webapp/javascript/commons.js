@@ -167,7 +167,7 @@ function menuTopFocus()
 
 function selectModule(index)
 {
-	var maxModule = 6;
+	var maxModule = 7;
 
 	for(var i=0; i<maxModule; i++)
 	{
@@ -232,6 +232,9 @@ function changeModule(index)
 
 		case 5 : 
 			redirectModule = "/ProductsListIFrame.do";
+		break;
+		case 6 : 
+			redirectModule = "/UsersListIFrame.do";
 		break;
 	}
 

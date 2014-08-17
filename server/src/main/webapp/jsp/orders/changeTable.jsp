@@ -73,7 +73,7 @@
 		<form name="modifyTableForm" action="<c:out value="${pageContext.request.contextPath}"/>/DisplayJsp.do" method="post" onsubmit="return false" target="IFrameData">
 			<input type="hidden" name="pageRequested" value="successChangeTable">
 			<input type="hidden" name='actionPasswordChangeOrders' value="allowModifyOrders">
-			<input type="hidden" name='isBillPrinting' value="false">			
+			<input type="hidden" name='printingType' value="NONE">
 		</form>
 		<div style='position: relative; height: 0;visibility:hidden'>
 			<c:if test="${not empty userSession.room.currentTable.orders}">	

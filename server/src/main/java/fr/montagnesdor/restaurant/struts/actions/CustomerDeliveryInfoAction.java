@@ -19,7 +19,7 @@ import org.apache.struts.action.ActionMapping;
  * To enable and disable the creation of type comments go to
  * Window>Preferences>Java>Code Generation.
  */
-public class CustomerBillInfoAction extends Action
+public class CustomerDeliveryInfoAction extends Action
 {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
